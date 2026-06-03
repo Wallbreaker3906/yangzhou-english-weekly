@@ -1,592 +1,591 @@
-     1|<!DOCTYPE html>
-     2|<html lang="zh-CN">
-     3|<head>
-     4|<meta charset="UTF-8">
-     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|<title>小船专供：扬州初中英语考题周报</title>
-     7|<style>
-     8|/* ===== Theme — Fresh Light ===== */
-     9|:root {
-    10|  --bg: #f5f7fa;
-    11|  --card-bg: #ffffff;
-    12|  --card-hover: #f0f7ff;
-    13|  --border: #e2e8f0;
-    14|  --border-light: #edf2f7;
-    15|  --text: #2d3748;
-    16|  --text-muted: #718096;
-    17|  --text-light: #a0aec0;
-    18|  --accent: #3182ce;
-    19|  --accent-light: #ebf4ff;
-    20|  --accent2: #e53e3e;
-    21|  --accent3: #38a169;
-    22|  --accent4: #805ad5;
-    23|  --tag-bg: #edf2f7;
-    24|  --tag-text: #4a5568;
-    25|  --divider: #e2e8f0;
-    26|  --step-bg: #f7fafc;
-    27|  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    28|  --shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
-    29|  --grade7: #3182ce;
-    30|  --grade7-bg: #ebf8ff;
-    31|  --grade8: #dd6b20;
-    32|  --grade8-bg: #fffaf0;
-    33|  --grade9: #805ad5;
-    34|  --grade9-bg: #faf5ff;
-    35|  --success: #38a169;
-    36|  --success-bg: #f0fff4;
-    37|  --warn: #d69e2e;
-    38|  --radius: 10px;
-    39|  --radius-sm: 6px;
-    40|}
-    41|
-    42|* { margin: 0; padding: 0; box-sizing: border-box; }
-    43|
-    44|body {
-    45|  background: var(--bg);
-    46|  color: var(--text);
-    47|  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-    48|  line-height: 1.6;
-    49|  min-height: 100vh;
-    50|}
-    51|
-    52|/* ===== Header ===== */
-    53|header {
-    54|  background: #fff;
-    55|  border-bottom: 1px solid var(--border);
-    56|  padding: 18px 24px;
-    57|  position: sticky;
-    58|  top: 0;
-    59|  z-index: 100;
-    60|  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    61|}
-    62|
-    63|.header-inner {
-    64|  max-width: 1100px;
-    65|  margin: 0 auto;
-    66|  display: flex;
-    67|  align-items: center;
-    68|  justify-content: space-between;
-    69|  flex-wrap: wrap;
-    70|  gap: 12px;
-    71|}
-    72|
-    73|.logo-area { display: flex; align-items: center; gap: 12px; }
-    74|
-    75|.logo-icon {
-    76|  font-size: 34px;
-    77|  animation: float 3s ease-in-out infinite;
-    78|}
-    79|
-    80|@keyframes float {
-    81|  0%, 100% { transform: translateY(0); }
-    82|  50% { transform: translateY(-5px); }
-    83|}
-    84|
-    85|.title-group h1 {
-    86|  font-size: 20px;
-    87|  font-weight: 700;
-    88|  color: var(--text);
-    89|}
-    90|
-    91|.title-group .subtitle {
-    92|  font-size: 12px;
-    93|  color: var(--text-muted);
-    94|  margin-top: 2px;
-    95|}
-    96|
-    97|.header-stats {
-    98|  display: flex;
-    99|  gap: 16px;
-   100|  font-size: 13px;
-   101|  color: var(--text-muted);
-   102|}
-   103|
-   104|.header-stats span { color: var(--accent); font-weight: 600; }
-   105|
-   106|/* ===== Search Bar ===== */
-   107|.search-wrap {
-   108|  max-width: 1100px;
-   109|  margin: 14px auto 0;
-   110|  padding: 0 24px;
-   111|}
-   112|
-   113|.search-box {
-   114|  display: flex;
-   115|  align-items: center;
-   116|  background: #fff;
-   117|  border: 1px solid var(--border);
-   118|  border-radius: 24px;
-   119|  padding: 10px 18px;
-   120|  transition: all 0.2s;
-   121|  box-shadow: var(--shadow);
-   122|}
-   123|
-   124|.search-box:focus-within {
-   125|  border-color: var(--accent);
-   126|  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-   127|}
-   128|
-   129|.search-icon { font-size: 16px; margin-right: 10px; }
-   130|
-   131|.search-box input {
-   132|  flex: 1;
-   133|  background: none;
-   134|  border: none;
-   135|  color: var(--text);
-   136|  font-size: 15px;
-   137|  outline: none;
-   138|}
-   139|
-   140|.search-box input::placeholder { color: var(--text-light); }
-   141|
-   142|.search-clear {
-   143|  background: none;
-   144|  border: none;
-   145|  color: var(--text-light);
-   146|  cursor: pointer;
-   147|  font-size: 16px;
-   148|  padding: 4px 8px;
-   149|  border-radius: 50%;
-   150|  display: none;
-   151|  transition: all 0.15s;
-   152|}
-   153|
-   154|.search-clear.visible { display: block; }
-   155|.search-clear:hover { color: var(--accent2); background: #fff5f5; }
-   156|
-   157|.search-count {
-   158|  font-size: 12px;
-   159|  color: var(--text-muted);
-   160|  margin-left: 8px;
-   161|  white-space: nowrap;
-   162|}
-   163|
-   164|/* ===== Filter Bar — Three Rows ===== */
-   165|.filter-section {
-   166|  max-width: 1100px;
-   167|  margin: 12px auto;
-   168|  padding: 0 24px;
-   169|}
-   170|
-   171|.filter-row {
-   172|  display: flex;
-   173|  flex-wrap: wrap;
-   174|  align-items: center;
-   175|  gap: 8px;
-   176|  margin-bottom: 10px;
-   177|}
-   178|
-   179|.filter-row:last-child { margin-bottom: 0; }
-   180|
-   181|.filter-label {
-   182|  font-size: 13px;
-   183|  font-weight: 600;
-   184|  color: var(--text);
-   185|  margin-right: 4px;
-   186|  white-space: nowrap;
-   187|  min-width: 48px;
-   188|}
-   189|
-   190|.filter-chip {
-   191|  padding: 5px 14px;
-   192|  border-radius: 20px;
-   193|  font-size: 13px;
-   194|  cursor: pointer;
-   195|  border: 1px solid var(--border);
-   196|  background: #fff;
-   197|  color: var(--text-muted);
-   198|  transition: all 0.2s;
-   199|  white-space: nowrap;
-   200|  user-select: none;
-   201|}
-   202|
-   203|.filter-chip:hover {
-   204|  border-color: var(--accent);
-   205|  color: var(--accent);
-   206|  background: var(--accent-light);
-   207|}
-   208|
-   209|.filter-chip.active {
-   210|  background: var(--accent);
-   211|  border-color: var(--accent);
-   212|  color: #fff;
-   213|  font-weight: 500;
-   214|}
-   215|
-   216|.filter-chip.grade7.active { background: var(--grade7); border-color: var(--grade7); }
-   217|.filter-chip.grade8.active { background: var(--grade8); border-color: var(--grade8); }
-   218|.filter-chip.grade9.active { background: var(--grade9); border-color: var(--grade9); }
-   219|
-   220|.filter-divider {
-   221|  width: 1px;
-   222|  height: 20px;
-   223|  background: var(--border);
-   224|  margin: 0 4px;
-   225|}
-   226|
-   227|.active-filters {
-   228|  font-size: 12px;
-   229|  color: var(--accent);
-   230|  margin-left: 8px;
-   231|  display: none;
-   232|}
-   233|
-   234|.active-filters.visible { display: inline; }
-   235|
-   236|/* ===== Main Content ===== */
-   237|main {
-   238|  max-width: 1100px;
-   239|  margin: 0 auto 40px;
-   240|  padding: 0 24px;
-   241|  display: flex;
-   242|  flex-direction: column-reverse;
-   243|}
-   244|
-   245|/* ===== Week Section ===== */
-   246|.week-section {
-   247|  margin-bottom: 36px;
-   248|}
-   249|
-   250|.week-header {
-   251|  display: flex;
-   252|  align-items: center;
-   253|  gap: 12px;
-   254|  margin-bottom: 20px;
-   255|  padding-bottom: 10px;
-   256|  border-bottom: 2px solid var(--accent-light);
-   257|}
-   258|
-   259|.week-dot {
-   260|  width: 10px;
-   261|  height: 10px;
-   262|  border-radius: 50%;
-   263|  background: var(--accent);
-   264|}
-   265|
-   266|.week-header h2 {
-   267|  font-size: 18px;
-   268|  font-weight: 700;
-   269|  color: var(--text);
-   270|}
-   271|
-   272|.week-badge {
-   273|  font-size: 12px;
-   274|  background: var(--accent-light);
-   275|  color: var(--accent);
-   276|  padding: 3px 12px;
-   277|  border-radius: 12px;
-   278|  font-weight: 500;
-   279|}
-   280|
-   281|/* ===== Grade Section ===== */
-   282|.grade-section {
-   283|  margin-bottom: 28px;
-   284|}
-   285|
-   286|.grade-label {
-   287|  display: inline-flex;
-   288|  align-items: center;
-   289|  gap: 8px;
-   290|  font-size: 15px;
-   291|  font-weight: 700;
-   292|  margin-bottom: 14px;
-   293|  padding: 5px 16px;
-   294|  border-radius: 6px;
-   295|}
-   296|
-   297|.grade-label.g7 {
-   298|  background: var(--grade7-bg);
-   299|  color: var(--grade7);
-   300|  border-left: 3px solid var(--grade7);
-   301|}
-   302|
-   303|.grade-label.g8 {
-   304|  background: var(--grade8-bg);
-   305|  color: var(--grade8);
-   306|  border-left: 3px solid var(--grade8);
-   307|}
-   308|
-   309|.grade-label.g9 {
-   310|  background: var(--grade9-bg);
-   311|  color: var(--grade9);
-   312|  border-left: 3px solid var(--grade9);
-   313|}
-   314|
-   315|/* ===== Type Group ===== */
-   316|.type-group {
-   317|  margin-bottom: 16px;
-   318|}
-   319|
-   320|.type-label {
-   321|  font-size: 13px;
-   322|  font-weight: 600;
-   323|  color: var(--text-muted);
-   324|  margin-bottom: 8px;
-   325|  padding-left: 2px;
-   326|  display: flex;
-   327|  align-items: center;
-   328|  gap: 6px;
-   329|}
-   330|
-   331|.type-label::before {
-   332|  content: '';
-   333|  width: 4px;
-   334|  height: 14px;
-   335|  background: var(--accent);
-   336|  border-radius: 2px;
-   337|}
-   338|
-   339|/* ===== Question Cards ===== */
-   340|.questions-grid {
-   341|  display: grid;
-   342|  grid-template-columns: 1fr;
-   343|  gap: 8px;
-   344|}
-   345|
-   346|.question-card {
-   347|  background: #fff;
-   348|  border: 1px solid var(--border);
-   349|  border-radius: var(--radius);
-   350|  padding: 16px 18px;
-   351|  cursor: pointer;
-   352|  transition: all 0.2s;
-   353|  box-shadow: var(--shadow);
-   354|}
-   355|
-   356|.question-card:hover {
-   357|  border-color: var(--accent);
-   358|  box-shadow: var(--shadow-hover);
-   359|}
-   360|
-   361|.question-card.active {
-   362|  border-color: var(--accent);
-   363|  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.12);
-   364|}
-   365|
-   366|.card-header {
-   367|  display: flex;
-   368|  align-items: flex-start;
-   369|  justify-content: space-between;
-   370|  gap: 12px;
-   371|  margin-bottom: 6px;
-   372|}
-   373|
-   374|.q-number {
-   375|  font-size: 13px;
-   376|  color: var(--accent);
-   377|  font-weight: 700;
-   378|  white-space: nowrap;
-   379|  min-width: 28px;
-   380|}
-   381|
-   382|.q-text {
-   383|  flex: 1;
-   384|  font-size: 14px;
-   385|  color: var(--text);
-   386|  line-height: 1.7;
-   387|}
-   388|
-   389|.card-meta {
-   390|  display: flex;
-   391|  flex-wrap: wrap;
-   392|  gap: 8px;
-   393|  align-items: center;
-   394|  margin-top: 6px;
-   395|}
-   396|
-   397|.meta-tag {
-   398|  font-size: 11px;
-   399|  padding: 2px 8px;
-   400|  border-radius: 4px;
-   401|  background: var(--tag-bg);
-   402|  color: var(--tag-text);
-   403|  font-weight: 500;
-   404|}
-   405|
-   406|.meta-tag.source {
-   407|  color: var(--text-muted);
-   408|  font-style: italic;
-   409|  background: none;
-   410|  padding-left: 0;
-   411|}
-   412|
-   413|.meta-tag.type-tag {
-   414|  background: #faf5ff;
-   415|  color: var(--accent4);
-   416|}
-   417|
-   418|/* ===== Answer Section (expandable) ===== */
-   419|.answer-section {
-   420|  display: none;
-   421|  margin-top: 14px;
-   422|  padding-top: 14px;
-   423|  border-top: 1px dashed var(--border);
-   424|}
-   425|
-   426|.question-card.active .answer-section { display: block; }
-   427|
-   428|.answer-box {
-   429|  background: var(--success-bg);
-   430|  border: 1px solid #c6f6d5;
-   431|  border-radius: var(--radius-sm);
-   432|  padding: 12px 14px;
-   433|  margin-bottom: 10px;
-   434|}
-   435|
-   436|.answer-label {
-   437|  font-size: 12px;
-   438|  font-weight: 700;
-   439|  color: var(--success);
-   440|  margin-bottom: 4px;
-   441|}
-   442|
-   443|.answer-content {
-   444|  font-size: 14px;
-   445|  color: var(--text);
-   446|  line-height: 1.7;
-   447|}
-   448|
-   449|.explanation-box {
-   450|  background: #faf5ff;
-   451|  border: 1px solid #e9d8fd;
-   452|  border-radius: var(--radius-sm);
-   453|  padding: 12px 14px;
-   454|}
-   455|
-   456|.explanation-label {
-   457|  font-size: 12px;
-   458|  font-weight: 700;
-   459|  color: var(--accent4);
-   460|  margin-bottom: 4px;
-   461|}
-   462|
-   463|.explanation-content {
-   464|  font-size: 13px;
-   465|  color: var(--text);
-   466|  line-height: 1.8;
-   467|}
-   468|
-   469|/* ===== Expand Hint ===== */
-   470|.expand-hint {
-   471|  font-size: 11px;
-   472|  color: var(--text-light);
-   473|  text-align: right;
-   474|  margin-top: 4px;
-   475|}
-   476|
-   477|.question-card.active .expand-hint { color: var(--accent); font-weight: 500; }
-   478|
-   479|/* ===== No Results / Placeholder ===== */
-   480|.no-results {
-   481|  text-align: center;
-   482|  padding: 60px 20px;
-   483|  color: var(--text-muted);
-   484|  font-size: 15px;
-   485|}
-   486|
-   487|.no-results .emoji { font-size: 48px; display: block; margin-bottom: 16px; }
-   488|
-   489|/* ===== Footer ===== */
-   490|footer {
-   491|  max-width: 1100px;
-   492|  margin: 0 auto;
-   493|  padding: 20px 24px 40px;
-   494|  text-align: center;
-   495|  font-size: 12px;
-   496|  color: var(--text-light);
-   497|  border-top: 1px solid var(--border);
-   498|}
-   499|
-   500|footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
-   501|
-   502|/* ===== Filtered / Hidden States ===== */
-   503|.question-card.filtered-out { display: none; }
-   504|.type-group.filtered-empty { display: none; }
-   505|.grade-section.filtered-empty { display: none; }
-   506|.week-section.filtered-empty { display: none; }
-   507|
-   508|/* ===== Responsive ===== */
-   509|@media (max-width: 768px) {
-   510|  .header-inner { flex-direction: column; align-items: flex-start; }
-   511|  .filter-row { gap: 6px; }
-   512|  .filter-chip { padding: 4px 10px; font-size: 12px; }
-   513|  .title-group h1 { font-size: 17px; }
-   514|  .header-stats { font-size: 12px; gap: 10px; }
-   515|}
-   516|</style>
-   517|</head>
-   518|<body>
-   519|
-   520|<!-- ===== HEADER ===== -->
-   521|<header>
-   522|  <div class="header-inner">
-   523|    <div class="logo-area">
-   524|      <span class="logo-icon">⛵</span>
-   525|      <div class="title-group">
-   526|        <h1>小船专供：扬州初中英语考题周报</h1>
-   527|        <div class="subtitle">扬州地区 · 初一至初三 · 近三年真题及权威模拟题</div>
-   528|      </div>
-   529|    </div>
-   530|    <div class="header-stats">
-   531|      <div>📚 总期数 <span id="total-weeks">1</span></div>
-   532|      <div>📝 总题数 <span id="total-questions">0</span></div>
-   533|      <div>🔄 每周一更新</div>
-   534|    </div>
-   535|  </div>
-   536|</header>
-   537|
-   538|<!-- ===== SEARCH ===== -->
-   539|<div class="search-wrap">
-   540|  <div class="search-box">
-   541|    <span class="search-icon">🔍</span>
-   542|    <input type="text" id="search-input" placeholder="搜索题目、知识点、来源…">
-   543|    <button class="search-clear" id="search-clear">✕</button>
-   544|    <span class="search-count" id="search-count"></span>
-   545|  </div>
-   546|</div>
-   547|
-   548|<!-- ===== FILTER BAR — Three Rows ===== -->
-   549|<div class="filter-section" id="filter-bar">
-   550|  <!-- Row 1: 年级 -->
-   551|  <div class="filter-row">
-   552|    <span class="filter-label">📅 年级</span>
-   553|    <span class="filter-chip grade7 active" data-filter="grade" data-value="grade7">初一</span>
-   554|    <span class="filter-chip grade8 active" data-filter="grade" data-value="grade8">初二</span>
-   555|    <span class="filter-chip grade9 active" data-filter="grade" data-value="grade9">初三</span>
-   556|    <span class="active-filters" id="active-filters-count"></span>
-   557|  </div>
-   558|
-   559|  <!-- Row 2: 题型 -->
-   560|  <div class="filter-row">
-   561|    <span class="filter-label">📋 题型</span>
-   562|    <span class="filter-chip active" data-filter="type" data-value="all">全部</span>
-   563|    <span class="filter-chip" data-filter="type" data-value="单项选择">单项选择</span>
-   564|    <span class="filter-chip" data-filter="type" data-value="完形填空">完形填空</span>
-   565|    <span class="filter-chip" data-filter="type" data-value="词汇运用">词汇运用</span>
-   566|    <span class="filter-chip" data-filter="type" data-value="阅读理解">阅读理解</span>
-   567|    <span class="filter-chip" data-filter="type" data-value="任务型阅读">任务型阅读</span>
-   568|    <span class="filter-chip" data-filter="type" data-value="选句填空">选句填空</span>
-   569|    <span class="filter-chip" data-filter="type" data-value="书面表达">书面表达</span>
-   570|    <span class="filter-chip" data-filter="type" data-value="句子翻译">句子翻译</span>
-   571|    <span class="filter-chip" data-filter="type" data-value="句型转换">句型转换</span>
-   572|    <span class="filter-chip" data-filter="type" data-value="语法填空">语法填空</span>
-   573|  </div>
-   574|
-   575|  <!-- Row 3: 日期 -->
-   576|  <div class="filter-row">
-   577|    <span class="filter-label">📆 周次</span>
-   578|    <span class="filter-chip active" data-filter="week" data-value="all">全部</span>
-   579|    <span class="filter-chip" data-filter="week" data-value="week-1">第1周</span>
-   580|    <!-- Week chips populated by JS -->
-   581|  </div>
-   582|</div>
-   583|
-   584|<!-- ===== MAIN CONTENT ===== -->
-   585|<main id="content">
-   586|
-   587|  <!-- Week sections will be inserted here -->
-   588|  <!-- WEEKLY_CONTENT_START -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小船专供：扬州初中英语考题周报</title>
+<style>
+/* ===== Theme — Fresh Light ===== */
+:root {
+  --bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --card-hover: #f0f7ff;
+  --border: #e2e8f0;
+  --border-light: #edf2f7;
+  --text: #2d3748;
+  --text-muted: #718096;
+  --text-light: #a0aec0;
+  --accent: #3182ce;
+  --accent-light: #ebf4ff;
+  --accent2: #e53e3e;
+  --accent3: #38a169;
+  --accent4: #805ad5;
+  --tag-bg: #edf2f7;
+  --tag-text: #4a5568;
+  --divider: #e2e8f0;
+  --step-bg: #f7fafc;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
+  --grade7: #3182ce;
+  --grade7-bg: #ebf8ff;
+  --grade8: #dd6b20;
+  --grade8-bg: #fffaf0;
+  --grade9: #805ad5;
+  --grade9-bg: #faf5ff;
+  --success: #38a169;
+  --success-bg: #f0fff4;
+  --warn: #d69e2e;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 18px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo-area { display: flex; align-items: center; gap: 12px; }
+
+.logo-icon {
+  font-size: 34px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.title-group h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.title-group .subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.header-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.header-stats span { color: var(--accent); font-weight: 600; }
+
+/* ===== Search Bar ===== */
+.search-wrap {
+  max-width: 1100px;
+  margin: 14px auto 0;
+  padding: 0 24px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 10px 18px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.search-icon { font-size: 16px; margin-right: 10px; }
+
+.search-box input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.search-box input::placeholder { color: var(--text-light); }
+
+.search-clear {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 50%;
+  display: none;
+  transition: all 0.15s;
+}
+
+.search-clear.visible { display: block; }
+.search-clear:hover { color: var(--accent2); background: #fff5f5; }
+
+.search-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+/* ===== Filter Bar — Three Rows ===== */
+.filter-section {
+  max-width: 1100px;
+  margin: 12px auto;
+  padding: 0 24px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.filter-row:last-child { margin-bottom: 0; }
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-right: 4px;
+  white-space: nowrap;
+  min-width: 48px;
+}
+
+.filter-chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.filter-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.filter-chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 500;
+}
+
+.filter-chip.grade7.active { background: var(--grade7); border-color: var(--grade7); }
+.filter-chip.grade8.active { background: var(--grade8); border-color: var(--grade8); }
+.filter-chip.grade9.active { background: var(--grade9); border-color: var(--grade9); }
+
+.filter-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.active-filters {
+  font-size: 12px;
+  color: var(--accent);
+  margin-left: 8px;
+  display: none;
+}
+
+.active-filters.visible { display: inline; }
+
+/* ===== Main Content ===== */
+main {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* ===== Week Section ===== */
+.week-section {
+  margin-bottom: 36px;
+}
+
+.week-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-light);
+}
+
+.week-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.week-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.week-badge {
+  font-size: 12px;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* ===== Grade Section ===== */
+.grade-section {
+  margin-bottom: 28px;
+}
+
+.grade-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding: 5px 16px;
+  border-radius: 6px;
+}
+
+.grade-label.g7 {
+  background: var(--grade7-bg);
+  color: var(--grade7);
+  border-left: 3px solid var(--grade7);
+}
+
+.grade-label.g8 {
+  background: var(--grade8-bg);
+  color: var(--grade8);
+  border-left: 3px solid var(--grade8);
+}
+
+.grade-label.g9 {
+  background: var(--grade9-bg);
+  color: var(--grade9);
+  border-left: 3px solid var(--grade9);
+}
+
+/* ===== Type Group ===== */
+.type-group {
+  margin-bottom: 16px;
+}
+
+.type-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.type-label::before {
+  content: '';
+  width: 4px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ===== Question Cards ===== */
+.questions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.question-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.question-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.question-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.12);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.q-number {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 28px;
+}
+
+.q-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.meta-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-weight: 500;
+}
+
+.meta-tag.source {
+  color: var(--text-muted);
+  font-style: italic;
+  background: none;
+  padding-left: 0;
+}
+
+.meta-tag.type-tag {
+  background: #faf5ff;
+  color: var(--accent4);
+}
+
+/* ===== Answer Section (expandable) ===== */
+.answer-section {
+  display: none;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+
+.question-card.active .answer-section { display: block; }
+
+.answer-box {
+  background: var(--success-bg);
+  border: 1px solid #c6f6d5;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.answer-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: 4px;
+}
+
+.answer-content {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.explanation-box {
+  background: #faf5ff;
+  border: 1px solid #e9d8fd;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.explanation-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent4);
+  margin-bottom: 4px;
+}
+
+.explanation-content {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ===== Expand Hint ===== */
+.expand-hint {
+  font-size: 11px;
+  color: var(--text-light);
+  text-align: right;
+  margin-top: 4px;
+}
+
+.question-card.active .expand-hint { color: var(--accent); font-weight: 500; }
+
+/* ===== No Results / Placeholder ===== */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.no-results .emoji { font-size: 48px; display: block; margin-bottom: 16px; }
+
+/* ===== Footer ===== */
+footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+}
+
+footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+/* ===== Filtered / Hidden States ===== */
+.question-card.filtered-out { display: none; }
+.type-group.filtered-empty { display: none; }
+.grade-section.filtered-empty { display: none; }
+.week-section.filtered-empty { display: none; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .filter-row { gap: 6px; }
+  .filter-chip { padding: 4px 10px; font-size: 12px; }
+  .title-group h1 { font-size: 17px; }
+  .header-stats { font-size: 12px; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <span class="logo-icon">⛵</span>
+      <div class="title-group">
+        <h1>小船专供：扬州初中英语考题周报</h1>
+        <div class="subtitle">扬州地区 · 初一至初三 · 近三年真题及权威模拟题</div>
+      </div>
+    </div>
+    <div class="header-stats">
+      <div>📚 总期数 <span id="total-weeks">1</span></div>
+      <div>📝 总题数 <span id="total-questions">0</span></div>
+      <div>🔄 每周一更新</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== SEARCH ===== -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="搜索题目、知识点、来源…">
+    <button class="search-clear" id="search-clear">✕</button>
+    <span class="search-count" id="search-count"></span>
+  </div>
+</div>
+
+<!-- ===== FILTER BAR — Three Rows ===== -->
+<div class="filter-section" id="filter-bar">
+  <!-- Row 1: 年级 -->
+  <div class="filter-row">
+    <span class="filter-label">📅 年级</span>
+    <span class="filter-chip grade7 active" data-filter="grade" data-value="grade7">初一</span>
+    <span class="filter-chip grade8 active" data-filter="grade" data-value="grade8">初二</span>
+    <span class="filter-chip grade9 active" data-filter="grade" data-value="grade9">初三</span>
+    <span class="active-filters" id="active-filters-count"></span>
+  </div>
+
+  <!-- Row 2: 题型 -->
+  <div class="filter-row">
+    <span class="filter-label">📋 题型</span>
+    <span class="filter-chip active" data-filter="type" data-value="all">全部</span>
+    <span class="filter-chip" data-filter="type" data-value="单项选择">单项选择</span>
+    <span class="filter-chip" data-filter="type" data-value="完形填空">完形填空</span>
+    <span class="filter-chip" data-filter="type" data-value="词汇运用">词汇运用</span>
+    <span class="filter-chip" data-filter="type" data-value="阅读理解">阅读理解</span>
+    <span class="filter-chip" data-filter="type" data-value="任务型阅读">任务型阅读</span>
+    <span class="filter-chip" data-filter="type" data-value="选句填空">选句填空</span>
+    <span class="filter-chip" data-filter="type" data-value="书面表达">书面表达</span>
+    <span class="filter-chip" data-filter="type" data-value="句子翻译">句子翻译</span>
+    <span class="filter-chip" data-filter="type" data-value="句型转换">句型转换</span>
+    <span class="filter-chip" data-filter="type" data-value="语法填空">语法填空</span>
+  </div>
+
+  <!-- Row 3: 日期 -->
+  <div class="filter-row">
+    <span class="filter-label">📆 周次</span>
+    <span class="filter-chip active" data-filter="week" data-value="all">全部</span>
+    <span class="filter-chip" data-filter="week" data-value="week-1">第1周</span>
+    <!-- Week chips populated by JS -->
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main id="content">
+
+  <!-- Week sections will be inserted here -->
+  <!-- WEEKLY_CONTENT_START -->
 <!-- ⛵ 第1周 | 2026.06.01 - 2026.06.07 -->
   <div class="week-section" id="week-1" data-week="week-1">
     <div class="week-header">
@@ -681,203 +680,208 @@
 
   </div>
 
-   602|  <!-- WEEKLY_CONTENT_END -->
-   603|
-   604|</main>
-   605|
-   606|<!-- ===== FOOTER ===== -->
-   607|<footer>
-   608|  <p>🚀 Powered by Hermes Agent · 数据来源：近三年扬州中考真题及教育类权威网站 · 每周一自动更新</p>
-   609|  <p>题目来源标注于每题下方，仅供学习参考 · <a href="https://github.com/Wallbreaker3906/yangzhou-english-weekly" target="_blank">GitHub</a></p>
-   610|</footer>
-   611|
-   612|<script>
-   613|(function() {
-   614|  const searchInput = document.getElementById('search-input');
-   615|  const searchClear = document.getElementById('search-clear');
-   616|  const searchCount = document.getElementById('search-count');
-   617|  const filterBar = document.getElementById('filter-bar');
-   618|  const activeFiltersCount = document.getElementById('active-filters-count');
-   619|  const mainEl = document.querySelector('main');
-   620|
-   621|  // State
-   622|  let activeGrades = new Set(['grade7', 'grade8', 'grade9']);
-   623|  let activeType = 'all';
-   624|  let activeWeek = 'all';
-   625|
-   626|  // Filter Chips
-   627|  filterBar.addEventListener('click', function(e) {
-   628|    const chip = e.target.closest('.filter-chip');
-   629|    if (!chip) return;
-   630|    const filter = chip.dataset.filter;
-   631|    const value = chip.dataset.value;
-   632|
-   633|    if (filter === 'grade') {
-   634|      if (activeGrades.has(value)) {
-   635|        if (activeGrades.size > 1) {
-   636|          activeGrades.delete(value);
-   637|          chip.classList.remove('active');
-   638|        }
-   639|      } else {
-   640|        activeGrades.add(value);
-   641|        chip.classList.add('active');
-   642|      }
-   643|    } else if (filter === 'type') {
-   644|      filterBar.querySelectorAll('[data-filter="type"]').forEach(c => c.classList.remove('active'));
-   645|      chip.classList.add('active');
-   646|      activeType = value;
-   647|    } else if (filter === 'week') {
-   648|      filterBar.querySelectorAll('[data-filter="week"]').forEach(c => c.classList.remove('active'));
-   649|      chip.classList.add('active');
-   650|      activeWeek = value;
-   651|    }
-   652|
-   653|    applyFilters();
-   654|    updateActiveFilterCount();
-   655|  });
-   656|
-   657|  // Search
-   658|  searchInput.addEventListener('input', function() {
-   659|    var query = this.value.trim().toLowerCase();
-   660|    if (query) {
-   661|      searchClear.classList.add('visible');
-   662|    } else {
-   663|      searchClear.classList.remove('visible');
-   664|    }
-   665|    applyFilters();
-   666|  });
-   667|
-   668|  searchClear.addEventListener('click', function() {
-   669|    searchInput.value = '';
-   670|    searchClear.classList.remove('visible');
-   671|    searchCount.textContent = '';
-   672|    applyFilters();
-   673|  });
-   674|
-   675|  // Card Click (expand)
-   676|  mainEl.addEventListener('click', function(e) {
-   677|    var card = e.target.closest('.question-card');
-   678|    if (!card) return;
-   679|    card.classList.toggle('active');
-   680|  });
-   681|
-   682|  // Apply Filters
-   683|  function applyFilters() {
-   684|    var query = searchInput.value.trim().toLowerCase();
-   685|    var totalVisible = 0;
-   686|    var totalCards = 0;
-   687|
-   688|    var cards = mainEl.querySelectorAll('.question-card');
-   689|    totalCards = cards.length;
-   690|
-   691|    cards.forEach(function(card) {
-   692|      var gradeEl = card.closest('.grade-section');
-   693|      var weekEl = card.closest('.week-section');
-   694|      var grade = gradeEl ? gradeEl.dataset.grade : '';
-   695|      var week = weekEl ? weekEl.dataset.week : '';
-   696|      var type = card.dataset.type || '';
-   697|      var visible = true;
-   698|
-   699|      if (grade && !activeGrades.has(grade)) visible = false;
-   700|      if (activeType !== 'all' && type !== activeType) visible = false;
-   701|      if (activeWeek !== 'all' && week !== activeWeek) visible = false;
-   702|
-   703|      if (query) {
-   704|        var cardText = card.textContent.toLowerCase();
-   705|        if (cardText.indexOf(query) === -1) visible = false;
-   706|      }
-   707|
-   708|      if (visible) { card.classList.remove('filtered-out'); totalVisible++; }
-   709|      else { card.classList.add('filtered-out'); }
-   710|    });
-   711|
-   712|    // Hide empty groups
-   713|    mainEl.querySelectorAll('.type-group').forEach(function(group) {
-   714|      var vc = group.querySelectorAll('.question-card:not(.filtered-out)');
-   715|      if (vc.length === 0) group.classList.add('filtered-empty');
-   716|      else group.classList.remove('filtered-empty');
-   717|    });
-   718|
-   719|    mainEl.querySelectorAll('.grade-section').forEach(function(section) {
-   720|      var vg = section.querySelectorAll('.type-group:not(.filtered-empty)');
-   721|      if (vg.length === 0) section.classList.add('filtered-empty');
-   722|      else section.classList.remove('filtered-empty');
-   723|    });
-   724|
-   725|    mainEl.querySelectorAll('.week-section').forEach(function(section) {
-   726|      var vw = section.querySelectorAll('.grade-section:not(.filtered-empty)');
-   727|      if (vw.length === 0) section.classList.add('filtered-empty');
-   728|      else section.classList.remove('filtered-empty');
-   729|    });
-   730|
-   731|    if (query) searchCount.textContent = totalVisible + '/' + totalCards;
-   732|    else searchCount.textContent = '';
-   733|
-   734|    var placeholder = document.getElementById('placeholder');
-   735|    if (placeholder && totalCards > 0 && totalVisible === 0) {
-   736|      placeholder.style.display = 'block';
-   737|      placeholder.querySelector('.emoji').textContent = '🔍';
-   738|      placeholder.querySelector('p').textContent = '没有找到匹配的题目，试试其他筛选条件吧～';
-   739|    } else if (placeholder && totalCards > 0) {
-   740|      placeholder.style.display = 'none';
-   741|    }
-   742|  }
-   743|
-   744|  function updateActiveFilterCount() {
-   745|    var gradeCount = activeGrades.size;
-   746|    if (gradeCount < 3 || activeType !== 'all' || activeWeek !== 'all') {
-   747|      activeFiltersCount.classList.add('visible');
-   748|      var parts = [];
-   749|      if (gradeCount < 3) parts.push(gradeCount + '/3个年级');
-   750|      if (activeType !== 'all') parts.push('题型: ' + activeType);
-   751|      if (activeWeek !== 'all') parts.push('周次: ' + activeWeek);
-   752|      activeFiltersCount.textContent = '（已筛选: ' + parts.join(' | ') + '）';
-   753|    } else {
-   754|      activeFiltersCount.classList.remove('visible');
-   755|    }
-   756|  }
-   757|
-   758|  // Populate Week Chips
-   759|  function updateWeekChips() {
-   760|    var weekChips = filterBar.querySelectorAll('[data-filter="week"]:not([data-value="all"])');
-   761|    var weekSections = mainEl.querySelectorAll('.week-section');
-   762|    var existingWeeks = new Set();
-   763|    weekSections.forEach(function(s) { if (s.dataset.week) existingWeeks.add(s.dataset.week); });
-   764|
-   765|    weekChips.forEach(function(chip) {
-   766|      if (!existingWeeks.has(chip.dataset.value)) chip.remove();
-   767|    });
-   768|
-   769|    existingWeeks.forEach(function(weekValue) {
-   770|      if (!filterBar.querySelector('[data-filter="week"][data-value="' + weekValue + '"]')) {
-   771|        var allChip = filterBar.querySelector('[data-filter="week"][data-value="all"]');
-   772|        var newChip = document.createElement('span');
-   773|        newChip.className = 'filter-chip';
-   774|        newChip.dataset.filter = 'week';
-   775|        newChip.dataset.value = weekValue;
-   776|        newChip.textContent = weekValue.replace('week-', '第') + '周';
-   777|        allChip.after(newChip);
-   778|      }
-   779|    });
-   780|  }
-   781|
-   782|  // Update Stats
-   783|  function updateStats() {
-   784|    document.getElementById('total-questions').textContent = mainEl.querySelectorAll('.question-card').length;
-   785|    document.getElementById('total-weeks').textContent = mainEl.querySelectorAll('.week-section').length;
-   786|  }
-   787|
-   788|  // Init
-   789|  updateWeekChips();
-   790|  updateStats();
-   791|  applyFilters();
-   792|
-   793|  // Expose for content injection
-   794|  window.englishWeekly = {
-   795|    refresh: function() {
-   796|      updateWeekChips();
-   797|      updateStats();
-   798|      applyFilters();
-   799|    }
-   800|  };
-   801|
+  <!-- WEEKLY_CONTENT_END -->
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>🚀 Powered by Hermes Agent · 数据来源：近三年扬州中考真题及教育类权威网站 · 每周一自动更新</p>
+  <p>题目来源标注于每题下方，仅供学习参考 · <a href="https://github.com/Wallbreaker3906/yangzhou-english-weekly" target="_blank">GitHub</a></p>
+</footer>
+
+<script>
+(function() {
+  const searchInput = document.getElementById('search-input');
+  const searchClear = document.getElementById('search-clear');
+  const searchCount = document.getElementById('search-count');
+  const filterBar = document.getElementById('filter-bar');
+  const activeFiltersCount = document.getElementById('active-filters-count');
+  const mainEl = document.querySelector('main');
+
+  // State
+  let activeGrades = new Set(['grade7', 'grade8', 'grade9']);
+  let activeType = 'all';
+  let activeWeek = 'all';
+
+  // Filter Chips
+  filterBar.addEventListener('click', function(e) {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    const filter = chip.dataset.filter;
+    const value = chip.dataset.value;
+
+    if (filter === 'grade') {
+      if (activeGrades.has(value)) {
+        if (activeGrades.size > 1) {
+          activeGrades.delete(value);
+          chip.classList.remove('active');
+        }
+      } else {
+        activeGrades.add(value);
+        chip.classList.add('active');
+      }
+    } else if (filter === 'type') {
+      filterBar.querySelectorAll('[data-filter="type"]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeType = value;
+    } else if (filter === 'week') {
+      filterBar.querySelectorAll('[data-filter="week"]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeWeek = value;
+    }
+
+    applyFilters();
+    updateActiveFilterCount();
+  });
+
+  // Search
+  searchInput.addEventListener('input', function() {
+    var query = this.value.trim().toLowerCase();
+    if (query) {
+      searchClear.classList.add('visible');
+    } else {
+      searchClear.classList.remove('visible');
+    }
+    applyFilters();
+  });
+
+  searchClear.addEventListener('click', function() {
+    searchInput.value = '';
+    searchClear.classList.remove('visible');
+    searchCount.textContent = '';
+    applyFilters();
+  });
+
+  // Card Click (expand)
+  mainEl.addEventListener('click', function(e) {
+    var card = e.target.closest('.question-card');
+    if (!card) return;
+    card.classList.toggle('active');
+  });
+
+  // Apply Filters
+  function applyFilters() {
+    var query = searchInput.value.trim().toLowerCase();
+    var totalVisible = 0;
+    var totalCards = 0;
+
+    var cards = mainEl.querySelectorAll('.question-card');
+    totalCards = cards.length;
+
+    cards.forEach(function(card) {
+      var gradeEl = card.closest('.grade-section');
+      var weekEl = card.closest('.week-section');
+      var grade = gradeEl ? gradeEl.dataset.grade : '';
+      var week = weekEl ? weekEl.dataset.week : '';
+      var type = card.dataset.type || '';
+      var visible = true;
+
+      if (grade && !activeGrades.has(grade)) visible = false;
+      if (activeType !== 'all' && type !== activeType) visible = false;
+      if (activeWeek !== 'all' && week !== activeWeek) visible = false;
+
+      if (query) {
+        var cardText = card.textContent.toLowerCase();
+        if (cardText.indexOf(query) === -1) visible = false;
+      }
+
+      if (visible) { card.classList.remove('filtered-out'); totalVisible++; }
+      else { card.classList.add('filtered-out'); }
+    });
+
+    // Hide empty groups
+    mainEl.querySelectorAll('.type-group').forEach(function(group) {
+      var vc = group.querySelectorAll('.question-card:not(.filtered-out)');
+      if (vc.length === 0) group.classList.add('filtered-empty');
+      else group.classList.remove('filtered-empty');
+    });
+
+    mainEl.querySelectorAll('.grade-section').forEach(function(section) {
+      var vg = section.querySelectorAll('.type-group:not(.filtered-empty)');
+      if (vg.length === 0) section.classList.add('filtered-empty');
+      else section.classList.remove('filtered-empty');
+    });
+
+    mainEl.querySelectorAll('.week-section').forEach(function(section) {
+      var vw = section.querySelectorAll('.grade-section:not(.filtered-empty)');
+      if (vw.length === 0) section.classList.add('filtered-empty');
+      else section.classList.remove('filtered-empty');
+    });
+
+    if (query) searchCount.textContent = totalVisible + '/' + totalCards;
+    else searchCount.textContent = '';
+
+    var placeholder = document.getElementById('placeholder');
+    if (placeholder && totalCards > 0 && totalVisible === 0) {
+      placeholder.style.display = 'block';
+      placeholder.querySelector('.emoji').textContent = '🔍';
+      placeholder.querySelector('p').textContent = '没有找到匹配的题目，试试其他筛选条件吧～';
+    } else if (placeholder && totalCards > 0) {
+      placeholder.style.display = 'none';
+    }
+  }
+
+  function updateActiveFilterCount() {
+    var gradeCount = activeGrades.size;
+    if (gradeCount < 3 || activeType !== 'all' || activeWeek !== 'all') {
+      activeFiltersCount.classList.add('visible');
+      var parts = [];
+      if (gradeCount < 3) parts.push(gradeCount + '/3个年级');
+      if (activeType !== 'all') parts.push('题型: ' + activeType);
+      if (activeWeek !== 'all') parts.push('周次: ' + activeWeek);
+      activeFiltersCount.textContent = '（已筛选: ' + parts.join(' | ') + '）';
+    } else {
+      activeFiltersCount.classList.remove('visible');
+    }
+  }
+
+  // Populate Week Chips
+  function updateWeekChips() {
+    var weekChips = filterBar.querySelectorAll('[data-filter="week"]:not([data-value="all"])');
+    var weekSections = mainEl.querySelectorAll('.week-section');
+    var existingWeeks = new Set();
+    weekSections.forEach(function(s) { if (s.dataset.week) existingWeeks.add(s.dataset.week); });
+
+    weekChips.forEach(function(chip) {
+      if (!existingWeeks.has(chip.dataset.value)) chip.remove();
+    });
+
+    existingWeeks.forEach(function(weekValue) {
+      if (!filterBar.querySelector('[data-filter="week"][data-value="' + weekValue + '"]')) {
+        var allChip = filterBar.querySelector('[data-filter="week"][data-value="all"]');
+        var newChip = document.createElement('span');
+        newChip.className = 'filter-chip';
+        newChip.dataset.filter = 'week';
+        newChip.dataset.value = weekValue;
+        newChip.textContent = weekValue.replace('week-', '第') + '周';
+        allChip.after(newChip);
+      }
+    });
+  }
+
+  // Update Stats
+  function updateStats() {
+    document.getElementById('total-questions').textContent = mainEl.querySelectorAll('.question-card').length;
+    document.getElementById('total-weeks').textContent = mainEl.querySelectorAll('.week-section').length;
+  }
+
+  // Init
+  updateWeekChips();
+  updateStats();
+  applyFilters();
+
+  // Expose for content injection
+  window.englishWeekly = {
+    refresh: function() {
+      updateWeekChips();
+      updateStats();
+      applyFilters();
+    }
+  };
+
+})();
+</script>
+
+</body>
+</html>
