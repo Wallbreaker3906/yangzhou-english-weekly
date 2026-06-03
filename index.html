@@ -89,6 +89,15 @@ footer a { color:var(--accent); text-decoration:none; font-weight:500; }
   .q-text { font-size:15px; }
   .filter-chip { padding:6px 12px; font-size:13px; }
 }
+
+.copy-btn { display:inline-block; margin-left:8px; padding:2px 8px; font-size:11px; color:var(--accent); background:var(--accent-light); border:1px solid var(--accent); border-radius:4px; cursor:pointer; opacity:0.6; transition:all .15s; vertical-align:middle; user-select:none; }
+.copy-btn:hover { opacity:1; background:var(--accent); color:#fff; }
+.copy-btn.copied { background:var(--success); border-color:var(--success); color:#fff; opacity:1; }
+.q-text-wrap { position:relative; flex:1; }
+.q-text-wrap .copy-btn { position:absolute; top:0; right:0; }
+@media (max-width:480px) {
+  .copy-btn { font-size:10px; padding:2px 6px; margin-left:4px; }
+}
 </style>
 </head>
 <body>
@@ -224,8 +233,8 @@ if(q)sco.textContent=tv+'/'+tc;else sco.textContent='';
 function updateCount(){var yc=activeYears.size;if(yc<3||activeType!=='all'||activeWeek!=='all'){afc.classList.add('visible');var p=[];if(yc<3)p.push(yc+'/3个年份');if(activeType!=='all')p.push(activeType);if(activeWeek!=='all')p.push(activeWeek);afc.textContent='（已筛选: '+p.join(' | ')+'）'}else afc.classList.remove('visible')}
 function updateWeeks(){var cs=fb.querySelectorAll('[data-filter="week"]:not([data-value="all"])'),ws=m.querySelectorAll('.week-section'),ew=new Set();ws.forEach(function(s){if(s.dataset.week)ew.add(s.dataset.week)});cs.forEach(function(c){if(!ew.has(c.dataset.value))c.remove()});ew.forEach(function(w){if(!fb.querySelector('[data-filter="week"][data-value="'+w+'"]')){var ac=fb.querySelector('[data-filter="week"][data-value="all"]'),nc=document.createElement('span');nc.className='filter-chip';nc.dataset.filter='week';nc.dataset.value=w;nc.textContent=w.replace('week-','第')+'周';ac.after(nc)}})}
 function updateStats(){document.getElementById('total-questions').textContent=m.querySelectorAll('.question-card').length;document.getElementById('total-weeks').textContent=m.querySelectorAll('.week-section').length}
-updateWeeks();updateStats();apply();
-window.englishWeekly={refresh:function(){updateWeeks();updateStats();apply()}};
+updateWeeks();updateStats();apply();addCopyButtons();
+window.englishWeekly={refresh:function(){updateWeeks();updateStats();apply();addCopyButtons();addCopyButtons();}};
 })();
 </script>
 </body>
