@@ -5,519 +5,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小船专供：扬州初中英语考题周报</title>
 <style>
-/* ===== Theme — Fresh Light ===== */
 :root {
-  --bg: #f5f7fa;
-  --card-bg: #ffffff;
-  --card-hover: #f0f7ff;
-  --border: #e2e8f0;
-  --border-light: #edf2f7;
-  --text: #2d3748;
-  --text-muted: #718096;
-  --text-light: #a0aec0;
-  --accent: #3182ce;
-  --accent-light: #ebf4ff;
-  --accent2: #e53e3e;
-  --accent3: #38a169;
-  --accent4: #805ad5;
-  --tag-bg: #edf2f7;
-  --tag-text: #4a5568;
-  --divider: #e2e8f0;
-  --step-bg: #f7fafc;
-  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
-  --grade7: #3182ce;
-  --grade7-bg: #ebf8ff;
-  --grade8: #dd6b20;
-  --grade8-bg: #fffaf0;
-  --grade9: #805ad5;
-  --grade9-bg: #faf5ff;
-  --success: #38a169;
-  --success-bg: #f0fff4;
-  --warn: #d69e2e;
-  --radius: 10px;
-  --radius-sm: 6px;
+  --bg: #f5f7fa; --card-bg: #fff; --card-hover: #f0f7ff;
+  --border: #e2e8f0; --text: #2d3748; --text-muted: #718096; --text-light: #a0aec0;
+  --accent: #3182ce; --accent-light: #ebf4ff; --accent2: #e53e3e; --accent3: #38a169;
+  --accent4: #805ad5; --tag-bg: #edf2f7; --tag-text: #4a5568; --divider: #e2e8f0;
+  --step-bg: #f7fafc; --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --grade9: #805ad5; --grade9-bg: #faf5ff; --success: #38a169; --success-bg: #f0fff4;
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* ===== Header ===== */
-header {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 18px 24px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.logo-area { display: flex; align-items: center; gap: 12px; }
-
-.logo-icon {
-  font-size: 34px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.title-group h1 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.title-group .subtitle {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-.header-stats {
-  display: flex;
-  gap: 16px;
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.header-stats span { color: var(--accent); font-weight: 600; }
-
-/* ===== Search Bar ===== */
-.search-wrap {
-  max-width: 1100px;
-  margin: 14px auto 0;
-  padding: 0 24px;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 10px 18px;
-  transition: all 0.2s;
-  box-shadow: var(--shadow);
-}
-
-.search-box:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-}
-
-.search-icon { font-size: 16px; margin-right: 10px; }
-
-.search-box input {
-  flex: 1;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 15px;
-  outline: none;
-}
-
-.search-box input::placeholder { color: var(--text-light); }
-
-.search-clear {
-  background: none;
-  border: none;
-  color: var(--text-light);
-  cursor: pointer;
-  font-size: 16px;
-  padding: 4px 8px;
-  border-radius: 50%;
-  display: none;
-  transition: all 0.15s;
-}
-
-.search-clear.visible { display: block; }
-.search-clear:hover { color: var(--accent2); background: #fff5f5; }
-
-.search-count {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-left: 8px;
-  white-space: nowrap;
-}
-
-/* ===== Filter Bar — Three Rows ===== */
-.filter-section {
-  max-width: 1100px;
-  margin: 12px auto;
-  padding: 0 24px;
-}
-
-.filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.filter-row:last-child { margin-bottom: 0; }
-
-.filter-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  margin-right: 4px;
-  white-space: nowrap;
-  min-width: 48px;
-}
-
-.filter-chip {
-  padding: 5px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--text-muted);
-  transition: all 0.2s;
-  white-space: nowrap;
-  user-select: none;
-}
-
-.filter-chip:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-light);
-}
-
-.filter-chip.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  font-weight: 500;
-}
-
-.filter-chip.grade7.active { background: var(--grade7); border-color: var(--grade7); }
-.filter-chip.grade8.active { background: var(--grade8); border-color: var(--grade8); }
-.filter-chip.grade9.active { background: var(--grade9); border-color: var(--grade9); }
-
-.filter-divider {
-  width: 1px;
-  height: 20px;
-  background: var(--border);
-  margin: 0 4px;
-}
-
-.active-filters {
-  font-size: 12px;
-  color: var(--accent);
-  margin-left: 8px;
-  display: none;
-}
-
-.active-filters.visible { display: inline; }
-
-/* ===== Main Content ===== */
-main {
-  max-width: 1100px;
-  margin: 0 auto 40px;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-/* ===== Week Section ===== */
-.week-section {
-  margin-bottom: 36px;
-}
-
-.week-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--accent-light);
-}
-
-.week-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.week-header h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.week-badge {
-  font-size: 12px;
-  background: var(--accent-light);
-  color: var(--accent);
-  padding: 3px 12px;
-  border-radius: 12px;
-  font-weight: 500;
-}
-
-/* ===== Grade Section ===== */
-.grade-section {
-  margin-bottom: 28px;
-}
-
-.grade-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  padding: 5px 16px;
-  border-radius: 6px;
-}
-
-.grade-label.g7 {
-  background: var(--grade7-bg);
-  color: var(--grade7);
-  border-left: 3px solid var(--grade7);
-}
-
-.grade-label.g8 {
-  background: var(--grade8-bg);
-  color: var(--grade8);
-  border-left: 3px solid var(--grade8);
-}
-
-.grade-label.g9 {
-  background: var(--grade9-bg);
-  color: var(--grade9);
-  border-left: 3px solid var(--grade9);
-}
-
-/* ===== Type Group ===== */
-.type-group {
-  margin-bottom: 16px;
-}
-
-.type-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  padding-left: 2px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.type-label::before {
-  content: '';
-  width: 4px;
-  height: 14px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-/* ===== Question Cards ===== */
-.questions-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-
-.question-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: var(--shadow);
-}
-
-.question-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-hover);
-}
-
-.question-card.active {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.12);
-}
-
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.q-number {
-  font-size: 13px;
-  color: var(--accent);
-  font-weight: 700;
-  white-space: nowrap;
-  min-width: 28px;
-}
-
-.q-text {
-  flex: 1;
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.7;
-}
-
-.card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  margin-top: 6px;
-}
-
-.meta-tag {
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  font-weight: 500;
-}
-
-.meta-tag.source {
-  color: var(--text-muted);
-  font-style: italic;
-  background: none;
-  padding-left: 0;
-}
-
-.meta-tag.type-tag {
-  background: #faf5ff;
-  color: var(--accent4);
-}
-
-/* ===== Answer Section (expandable) ===== */
-.answer-section {
-  display: none;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--border);
-}
-
-.question-card.active .answer-section { display: block !important; }
-
-.answer-box {
-  background: var(--success-bg);
-  border: 1px solid #c6f6d5;
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  margin-bottom: 10px;
-}
-
-.answer-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--success);
-  margin-bottom: 4px;
-}
-
-.answer-content {
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.7;
-}
-
-.explanation-box {
-  background: #faf5ff;
-  border: 1px solid #e9d8fd;
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-}
-
-.explanation-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--accent4);
-  margin-bottom: 4px;
-}
-
-.explanation-content {
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.8;
-}
-
-/* ===== Expand Hint ===== */
-.expand-hint {
-  font-size: 11px;
-  color: var(--text-light);
-  text-align: right;
-  margin-top: 4px;
-}
-
-.question-card.active .expand-hint { color: var(--accent); font-weight: 500; }
-
-/* ===== No Results / Placeholder ===== */
-.no-results {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-muted);
-  font-size: 15px;
-}
-
-.no-results .emoji { font-size: 48px; display: block; margin-bottom: 16px; }
-
-/* ===== Footer ===== */
-footer {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px 24px 40px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-light);
-  border-top: 1px solid var(--border);
-}
-
-footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
-
-/* ===== Filtered / Hidden States ===== */
-.question-card.filtered-out { display: none; }
-.type-group.filtered-empty { display: none; }
-.grade-section.filtered-empty { display: none; }
-.week-section.filtered-empty { display: none; }
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .header-inner { flex-direction: column; align-items: flex-start; }
-  .filter-row { gap: 6px; }
-  .filter-chip { padding: 4px 10px; font-size: 12px; }
-  .title-group h1 { font-size: 17px; }
-  .header-stats { font-size: 12px; gap: 10px; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; line-height:1.6; min-height:100vh; }
+header { background:#fff; border-bottom:1px solid var(--border); padding:18px 24px; position:sticky; top:0; z-index:100; }
+.header-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.logo-area { display:flex; align-items:center; gap:12px; }
+.logo-icon { font-size:34px; animation:float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+.title-group h1 { font-size:20px; font-weight:700; color:var(--text); }
+.title-group .subtitle { font-size:12px; color:var(--text-muted); margin-top:2px; }
+.header-stats { display:flex; gap:16px; font-size:13px; color:var(--text-muted); }
+.header-stats span { color:var(--accent); font-weight:600; }
+.search-wrap { max-width:1100px; margin:14px auto 0; padding:0 24px; }
+.search-box { display:flex; align-items:center; background:#fff; border:1px solid var(--border); border-radius:24px; padding:10px 18px; box-shadow:var(--shadow); }
+.search-box:focus-within { border-color:var(--accent); box-shadow:0 0 0 3px rgba(49,130,206,0.1); }
+.search-icon { font-size:16px; margin-right:10px; }
+.search-box input { flex:1; background:none; border:none; color:var(--text); font-size:15px; outline:none; }
+.search-box input::placeholder { color:var(--text-light); }
+.search-clear { background:none; border:none; color:var(--text-light); cursor:pointer; font-size:16px; padding:4px 8px; border-radius:50%; display:none; }
+.search-clear.visible { display:block; }
+.search-count { font-size:12px; color:var(--text-muted); margin-left:8px; }
+.filter-section { max-width:1100px; margin:12px auto; padding:0 24px; }
+.filter-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; }
+.filter-label { font-size:13px; font-weight:600; color:var(--text); margin-right:4px; min-width:48px; }
+.filter-chip { padding:5px 14px; border-radius:20px; font-size:13px; cursor:pointer; border:1px solid var(--border); background:#fff; color:var(--text-muted); transition:all .2s; user-select:none; }
+.filter-chip:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-light); }
+.filter-chip.active { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:500; }
+.filter-chip.y2024.active { background:#3182ce; border-color:#3182ce; }
+.filter-chip.y2023.active { background:#805ad5; border-color:#805ad5; }
+.filter-chip.y2022.active { background:#dd6b20; border-color:#dd6b20; }
+.active-filters { font-size:12px; color:var(--accent); margin-left:8px; display:none; }
+.active-filters.visible { display:inline; }
+main { max-width:1100px; margin:0 auto 40px; padding:0 24px; display:flex; flex-direction:column-reverse; }
+.week-section { margin-bottom:36px; }
+.week-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid var(--accent-light); }
+.week-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); }
+.week-header h2 { font-size:18px; font-weight:700; }
+.week-badge { font-size:12px; background:var(--accent-light); color:var(--accent); padding:3px 12px; border-radius:12px; }
+.grade-section { margin-bottom:28px; }
+.grade-label { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; margin-bottom:14px; padding:5px 16px; border-radius:6px; }
+.grade-label.g9 { background:var(--grade9-bg); color:var(--grade9); border-left:3px solid var(--grade9); }
+.type-group { margin-bottom:16px; }
+.type-label { font-size:13px; font-weight:600; color:var(--text-muted); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.type-label::before { content:''; width:4px; height:14px; background:var(--accent); border-radius:2px; }
+.questions-grid { display:grid; grid-template-columns:1fr; gap:8px; }
+.question-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:16px 18px; cursor:pointer; transition:all .2s; box-shadow:var(--shadow); }
+.question-card:hover { border-color:var(--accent); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+.question-card.active { border-color:var(--accent); box-shadow:0 0 0 2px rgba(49,130,206,0.12); }
+.card-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:6px; }
+.q-number { font-size:13px; color:var(--accent); font-weight:700; min-width:28px; }
+.q-text { flex:1; font-size:14px; line-height:1.7; }
+.card-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.meta-tag { font-size:11px; padding:2px 8px; border-radius:4px; background:var(--tag-bg); color:var(--tag-text); font-weight:500; }
+.meta-tag.source { color:var(--text-muted); font-style:italic; background:none; padding-left:0; }
+.meta-tag.type-tag { background:#faf5ff; color:var(--accent4); }
+.answer-section { display:none; margin-top:14px; padding-top:14px; border-top:1px dashed var(--border); }
+.question-card.active .answer-section { display:block !important; }
+.answer-box { background:var(--success-bg); border:1px solid #c6f6d5; border-radius:6px; padding:12px 14px; margin-bottom:10px; }
+.answer-label { font-size:12px; font-weight:700; color:var(--success); margin-bottom:4px; }
+.answer-content { font-size:14px; line-height:1.7; }
+.explanation-box { background:#faf5ff; border:1px solid #e9d8fd; border-radius:6px; padding:12px 14px; }
+.explanation-label { font-size:12px; font-weight:700; color:var(--accent4); margin-bottom:4px; }
+.explanation-content { font-size:13px; line-height:1.8; }
+.expand-hint { font-size:11px; color:var(--text-light); text-align:right; margin-top:4px; }
+.question-card.active .expand-hint { color:var(--accent); }
+.question-card.filtered-out { display:none; }
+.type-group.filtered-empty { display:none; }
+.grade-section.filtered-empty { display:none; }
+.week-section.filtered-empty { display:none; }
+footer { max-width:1100px; margin:0 auto; padding:20px 24px 40px; text-align:center; font-size:12px; color:var(--text-light); border-top:1px solid var(--border); }
+footer a { color:var(--accent); text-decoration:none; font-weight:500; }
+@media (max-width:768px) {
+  .header-inner { flex-direction:column; align-items:flex-start; }
+  .filter-row { gap:6px; }
+  .filter-chip { padding:4px 10px; font-size:12px; }
+  .title-group h1 { font-size:17px; }
 }
 </style>
 </head>
 <body>
-
-<!-- ===== HEADER ===== -->
 <header>
   <div class="header-inner">
     <div class="logo-area">
@@ -534,8 +108,6 @@ footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
     </div>
   </div>
 </header>
-
-<!-- ===== SEARCH ===== -->
 <div class="search-wrap">
   <div class="search-box">
     <span class="search-icon">🔍</span>
@@ -544,43 +116,31 @@ footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
     <span class="search-count" id="search-count"></span>
   </div>
 </div>
-
-<!-- ===== FILTER BAR — Three Rows ===== -->
 <div class="filter-section" id="filter-bar">
-  <!-- Row 1: 年级 -->
   <div class="filter-row">
     <span class="filter-label">📅 年份</span>
-    <span class="filter-chip year2024 active" data-filter="year" data-value="2024">2024年</span>
-    <span class="filter-chip year2023 active" data-filter="year" data-value="2023">2023年</span>
-    <span class="filter-chip year2022 active" data-filter="year" data-value="2022">2022年</span>
+    <span class="filter-chip y2024 active" data-filter="year" data-value="2024">2024年</span>
+    <span class="filter-chip y2023 active" data-filter="year" data-value="2023">2023年</span>
+    <span class="filter-chip y2022 active" data-filter="year" data-value="2022">2022年</span>
     <span class="active-filters" id="active-filters-count"></span>
   </div>
-
-  <!-- Row 2: 题型 -->
   <div class="filter-row">
-        <span class="filter-label">📋 题型</span>
+    <span class="filter-label">📋 题型</span>
     <span class="filter-chip active" data-filter="type" data-value="all">全部</span>
     <span class="filter-chip" data-filter="type" data-value="单项选择">单项选择</span>
     <span class="filter-chip" data-filter="type" data-value="词汇运用">词汇运用</span>
     <span class="filter-chip" data-filter="type" data-value="句子翻译">句子翻译</span>
     <span class="filter-chip" data-filter="type" data-value="书面表达">书面表达</span>
-
-  <!-- Row 3: 日期 -->
+  </div>
   <div class="filter-row">
     <span class="filter-label">📆 周次</span>
     <span class="filter-chip active" data-filter="week" data-value="all">全部</span>
     <span class="filter-chip" data-filter="week" data-value="week-1">第1周</span>
-    <!-- Week chips populated by JS -->
   </div>
 </div>
-
-<!-- ===== MAIN CONTENT ===== -->
-<main id="content">
-
-  <!-- Week sections will be inserted here -->
-  <!-- WEEKLY_CONTENT_START -->
-  <!-- ⛵ 第1周 | 2026.06.01 - 2026.06.07 -->
-  <div class="week-section" id="week-1" data-week="week-1">
+<main>
+<!-- WEEKLY_CONTENT_START -->
+  <div class="week-section" data-week="week-1">
     <div class="week-header">
       <span class="week-dot"></span>
       <h2>第1周考题精选</h2>
@@ -588,620 +148,85 @@ footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
     </div>
     <div class="grade-section" data-grade="grade9">
       <div class="grade-label g9">📕 扬州中考英语真题 · 第一期</div>
-
       <div class="type-group" data-type="单项选择">
-        <div class="type-label">单项选择（5题） · 2022-2024随机选题</div>
+        <div class="type-label">单项选择（5题）· 2022-2024随机选题</div>
         <div class="questions-grid">
-        <div class="question-card" data-type="单项选择" data-year="2022">
-          <div class="card-header">
-            <span class="q-number">Q12</span>
-            <span class="q-text">People in cold areas ________ warm colours to calm colours in their homes.</span>
-          </div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. protectB. preferC. pronounceD. practise</div>
-          <div class="card-meta">
-            <span class="meta-tag">2022年</span>
-            <span class="meta-tag type-tag">单项选择</span>
-            <span class="meta-tag source">来源：2022年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">B</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：寒冷地区的人们更喜欢家中是暖色系，而不是冷色系。
-考查动词辨析。protect保护；prefer更喜欢；pronounce发音；practise练习。根据“People in cold areas...warm colours to calm colours”以及常识可知寒冷地区的人更喜欢暖色系，prefer...to“与……相比，更喜欢……”。故选B。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="单项选择" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q8</span>
-            <span class="q-text">—How does this new washing machine work?
-—It’s easy. You ________ touch this icon.</span>
-          </div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. evenB. almostC. everD. just</div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">单项选择</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">D</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：——这台新洗衣机是怎么工作的？——很简单。你只需触摸此图标。
-考查副词辨析。even甚至；almost几乎；ever曾经；just仅仅，只是。根据“It’s easy.”可知，让这台洗衣机工作很简单，只需要触摸图标，故用just。故选D。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="单项选择" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q2</span>
-            <span class="q-text">“What’s that?” is ________ of the first things that children say.</span>
-          </div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. someB. eachC. oneD. that</div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">单项选择</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">C</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：“那是什么？”这是孩子们说的第一句话。
-考查代词辨析。some一些；each每个；one一；that那。“What’s that?”是孩子们说的一句话，one of the+名词复数，表“……之一”。故选C。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="单项选择" data-year="2023">
-          <div class="card-header">
-            <span class="q-number">Q3</span>
-            <span class="q-text">Slow cooking seems to hold the taste of the meat much ________.</span>
-          </div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. goodB. wellC. betterD. best</div>
-          <div class="card-meta">
-            <span class="meta-tag">2023年</span>
-            <span class="meta-tag type-tag">单项选择</span>
-            <span class="meta-tag source">来源：2023年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">C</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：慢煮似乎能更好地保持肉的味道。
-考查比较级。根据空前“much”可知，much是修饰比较级的词，此处应用比较级形式，故选C。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="单项选择" data-year="2023">
-          <div class="card-header">
-            <span class="q-number">Q1</span>
-            <span class="q-text">Yangzhou is ________ city full of ________ history, culture and mouthwatering food.</span>
-          </div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. the; aB. a; aC. the; theD. a; /</div>
-          <div class="card-meta">
-            <span class="meta-tag">2023年</span>
-            <span class="meta-tag type-tag">单项选择</span>
-            <span class="meta-tag source">来源：2023年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">D</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：扬州是一座充满历史、文化和令人垂涎的美食的城市。
-考查冠词。第一个空泛指“一个城市”，city以辅音音素开头，用不定冠词a，排除AC；根据“full of...history, culture...”可知此处指充满历史、文化等的城市，此处history是不可数名词，排除B。故选D。</div>
-            </div>
-          </div>
-        </div>
+          <div class="question-card" data-type="单项选择" data-year="2022"><div class="card-header"><span class="q-number">Q2</span><span class="q-text">It's ________ usual day for them to have a school trip.</span></div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. aB. anC. theD. /</div><div class="card-meta"><span class="meta-tag">2022年</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：2022年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">A</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">考查冠词。泛指“一个平常的日子”，usual以辅音音素开头，用a。故选A。</div></div></div></div>
+          <div class="question-card" data-type="单项选择" data-year="2024"><div class="card-header"><span class="q-number">Q1</span><span class="q-text">The Marco Polo Memorial Hall stands at the east end of Dongguan Street ________ Yangzhou.</span></div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. toB. onC. atD. in</div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">D</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">考查介词辨析。in Yangzhou“在扬州”，大地点用in。故选D。</div></div></div></div>
+          <div class="question-card" data-type="单项选择" data-year="2024"><div class="card-header"><span class="q-number">Q3</span><span class="q-text">Teamwork doesn't happen ________ in the workplace or school. It needs training.</span></div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. naturallyB. correctlyC. wildlyD. especially</div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">A</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">考查副词辨析。naturally“自然地”，句意：团队合作不会自然发生，需要训练。故选A。</div></div></div></div>
+          <div class="question-card" data-type="单项选择" data-year="2023"><div class="card-header"><span class="q-number">Q1</span><span class="q-text">Yangzhou is ________ city full of ________ history, culture and mouthwatering food.</span></div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. the; aB. a; aC. the; theD. a; /</div><div class="card-meta"><span class="meta-tag">2023年</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：2023年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">D</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">第一个空泛指“一个城市”，city以辅音音素开头用a；第二个空history为不可数名词，不用冠词。故选D。</div></div></div></div>
+          <div class="question-card" data-type="单项选择" data-year="2023"><div class="card-header"><span class="q-number">Q3</span><span class="q-text">Slow cooking seems to hold the taste of the meat much ________.</span></div><div style="font-size:13px;color:var(--text-muted);margin:6px 0 0 36px;line-height:2;">A. goodB. wellC. betterD. best</div><div class="card-meta"><span class="meta-tag">2023年</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：2023年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">C</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">much修饰比较级，better为well的比较级。故选C。</div></div></div></div>
         </div>
       </div>
       <div class="type-group" data-type="词汇运用">
-        <div class="type-label">词汇运用（5题） · 2022-2024随机选题</div>
+        <div class="type-label">词汇运用（5题）· 2022-2024随机选题</div>
         <div class="questions-grid">
-        <div class="question-card" data-type="词汇运用" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q53</span>
-            <span class="q-text">For further information on ________ weather conditions, call the hotline below. (明天)</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">词汇运用</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">tomorrow</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：有关明天天气状况的更多信息，请拨打以下热线。tomorrow“明天”，名词作定语。故填tomorrow。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="词汇运用" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q50</span>
-            <span class="q-text">If salt is ________ onto the ice, the freezing temperature will be lower than 0℃. (spread)</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">词汇运用</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">spread</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：如果把盐撒在冰上，冰点温度就会低于0℃。spread“传播，散开”，动词。此处指盐被撒到冰上，是被动语态，spread用其过去分词形式，其过去分词形式是spread。故填spread。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="词汇运用" data-year="2022">
-          <div class="card-header">
-            <span class="q-number">Q49</span>
-            <span class="q-text">After a night’s rain, the mountains are much greener and the air is much ________.（fresh）</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2022年</span>
-            <span class="meta-tag type-tag">词汇运用</span>
-            <span class="meta-tag source">来源：2022年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">fresher</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：下了一夜的雨，山更绿了，空气也更清新了。fresh“清新的”，根据“the mountains are much greener”以及“much”可知此处用形容词的比较级作表语。故填fresher。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="词汇运用" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q49</span>
-            <span class="q-text">Elena ________ the novel she was reading on the desk and looked out the window. (drop)</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">词汇运用</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">dropped</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：埃琳娜把正在读的小说扔在桌子上，望向窗外。drop“使落下”，动词。根据“and looked”可知，时态是一般过去时，谓语动词用其过去式。故填dropped。</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="词汇运用" data-year="2022">
-          <div class="card-header">
-            <span class="q-number">Q47</span>
-            <span class="q-text">Excuse me, what problems are we really ________ to solve?（try）</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2022年</span>
-            <span class="meta-tag type-tag">词汇运用</span>
-            <span class="meta-tag source">来源：2022年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">trying</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">句意：对不起，我们真的在设法解决什么问题？try“试图，设法”，根据“what problems are we really...to solve”可知此处表示正设法解决什么问题，用现在进行时be doing，故此处用现在分词。故填trying。</div>
-            </div>
-          </div>
-        </div>
+          <div class="question-card" data-type="词汇运用" data-year="2024"><div class="card-header"><span class="q-number">Q46</span><span class="q-text">Planting some flowers in your garden is very ________ for attracting bees. (help)</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">helpful</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">help“帮助”，is后接形容词作表语，helpful“有帮助的”。故填helpful。</div></div></div></div>
+          <div class="question-card" data-type="词汇运用" data-year="2024"><div class="card-header"><span class="q-number">Q48</span><span class="q-text">Though I failed a lot ________ times than I succeeded, I know how to fail well. (many)</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">more</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">由than可知用比较级，many的比较级为more。故填more。</div></div></div></div>
+          <div class="question-card" data-type="词汇运用" data-year="2024"><div class="card-header"><span class="q-number">Q47</span><span class="q-text">Every year, Yangzhou offers a magical and special experience for its ________. (tour)</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">tourists</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">tour“旅行”，此处指游客tourist，不止一人用复数tourists。故填tourists。</div></div></div></div>
+          <div class="question-card" data-type="词汇运用" data-year="2024"><div class="card-header"><span class="q-number">Q53</span><span class="q-text">For further information on ________ weather conditions, call the hotline below. (明天)</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">tomorrow's</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">tomorrow“明天”，名词所有格tomorrow's修饰weather conditions。故填tomorrow's。</div></div></div></div>
+          <div class="question-card" data-type="词汇运用" data-year="2023"><div class="card-header"><span class="q-number">Q48</span><span class="q-text">My uncle lives in a town ________ kilometers from Yangzhou. (十五)</span></div><div class="card-meta"><span class="meta-tag">2023年</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：2023年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">fifteen</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">fifteen“十五”，基数词表数量。故填fifteen。</div></div></div></div>
         </div>
       </div>
       <div class="type-group" data-type="句子翻译">
-        <div class="type-label">句子翻译（5题） · 2022-2024随机选题</div>
+        <div class="type-label">句子翻译（5题）· 2022-2024随机选题</div>
         <div class="questions-grid">
-        <div class="question-card" data-type="句子翻译" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q75</span>
-            <span class="q-text">让我们看看十年后我们中多少人能实现自己的梦想。
-_____________________________________________________________</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">句子翻译</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">Let’s see how many of us can achieve our dreams in ten years.</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">让我们看看：let’s see；十年后：in ten years；我们中多少人：how many of us；能实现自己的梦想：can achieve one’s dream。结合语境，句子是let型祈使句，句子采用一般现在时，see后接how many引导的宾语从句，从句也应用一般现在时，主语为how many of us，one’s应用our表示，情态动词can后加动词原形。故填Let’s see how many of us can achieve our dreams in ten years.
-</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="句子翻译" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q71</span>
-            <span class="q-text">你通常怎样使用零花钱?
-____________________________________________________________</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">句子翻译</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">How do you usually spend your pocket money?</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">本句是How“怎样”引导的特殊疑问句，时态是一般现在时，主语是第二人称you，故在疑问句中将助动词do提前，位于主语前，句中谓语动词用其原形。usually“通常”，副词；spend“花费”；pocket money“零花钱”。故填How do you usually spend your pocket money?</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="句子翻译" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q73</span>
-            <span class="q-text">那个女孩非常有创造力，总能想出新主意。
-_____________________________________________________________</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">句子翻译</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">The girl is very creative, and she can always come up with new ideas.</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">根据语境可知，句子用一般现在时；the girl“那个女孩”，be动词用is，表语是very creative“非常有创造力”；come up with“提出，想出”；new ideas“新的主意”，能：can，情态动词后加动词原形；总是：always，放情态动词之后。故填The girl is very creative, and she can always come up with new ideas.</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="句子翻译" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q72</span>
-            <span class="q-text">他三年前开始学习拉小提琴。
-_____________________________________________________________</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">句子翻译</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">He started to learn to play the violin three years ago.</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">本句是一般过去时，句中谓语动词用其过去式。he“他”，作主语。start to do sth.“开始做某事”；learn to do sth.“学习做某事”；play the violin“拉小提琴”；three years ago“三年前”。故填He started to learn to play the violin three years ago.</div>
-            </div>
-          </div>
-        </div>
-        <div class="question-card" data-type="句子翻译" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q74</span>
-            <span class="q-text">昨天一整天都在下雨，他们只好待在家里。
-_____________________________________________________________</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">句子翻译</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">It rained all day yesterday, so they had to stay at home.</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">根据语境可知，句子用一般过去时，第一个句子的主语是It，下雨：rained，状语是all day yesterday“昨天一整天”；第二个句子的主语是they，不得不做某事：had to do sth.，待在家里：stay at home；前后两句是因果关系，前因后果，用so连接。故填It rained all day yesterday, so they had to stay at home.</div>
-            </div>
-          </div>
-        </div>
+          <div class="question-card" data-type="句子翻译" data-year="2024"><div class="card-header"><span class="q-number">Q71</span><span class="q-text">你通常怎样使用零花钱？</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">How do you usually spend your pocket money?</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">How引导特殊疑问句，一般现在时，助动词do提前。usually“通常”，spend“花费”，pocket money“零花钱”。</div></div></div></div>
+          <div class="question-card" data-type="句子翻译" data-year="2024"><div class="card-header"><span class="q-number">Q72</span><span class="q-text">他三年前开始学习拉小提琴。</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">He started to learn to play the violin three years ago.</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">一般过去时。start to do sth. 开始做某事；learn to do sth. 学习做某事；play the violin拉小提琴；three years ago三年前。</div></div></div></div>
+          <div class="question-card" data-type="句子翻译" data-year="2024"><div class="card-header"><span class="q-number">Q73</span><span class="q-text">那个女孩非常有创造力，总能想出新主意。</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">The girl is very creative, and she can always come up with new ideas.</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">一般现在时。creative“有创造力的”；come up with“想出”；new ideas“新主意”。and连接两个并列分句。</div></div></div></div>
+          <div class="question-card" data-type="句子翻译" data-year="2024"><div class="card-header"><span class="q-number">Q74</span><span class="q-text">昨天下了一整天雨，他们只好待在家里。</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">It rained all day yesterday, so they had to stay at home.</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">一般过去时。all day yesterday“昨天一整天”；had to“不得不”；stay at home“待在家里”。so连接因果。</div></div></div></div>
+          <div class="question-card" data-type="句子翻译" data-year="2024"><div class="card-header"><span class="q-number">Q75</span><span class="q-text">让我们看看十年后我们中多少人能实现自己的梦想。</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 答案</div><div class="answer-content">Let's see how many of us can achieve our dreams in ten years.</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">Let's see“让我们看看”；how many of us“我们中多少人”；achieve one's dream“实现梦想”；in ten years“十年后”。</div></div></div></div>
         </div>
       </div>
       <div class="type-group" data-type="书面表达">
-        <div class="type-label">书面表达 · 2022-2024随机选题</div>
+        <div class="type-label">书面表达（1题）· 2024年扬州中考真题</div>
         <div class="questions-grid">
-        <div class="question-card" data-type="书面表达" data-year="2024">
-          <div class="card-header">
-            <span class="q-number">Q1</span>
-            <span class="q-text">B.写作（计20分）
-端午节是我国的传统节日。请写一篇英语短文介绍端午节：1. 时间和传统习俗；2. 屈原的爱国精神；3. 团队精神的现实意义。</span>
-          </div>
-          <div class="card-meta">
-            <span class="meta-tag">2024年</span>
-            <span class="meta-tag type-tag">书面表达</span>
-            <span class="meta-tag source">来源：2024年扬州中考真题</span>
-          </div>
-          <div class="expand-hint">💡 点击查看答案与解析</div>
-          <div class="answer-section">
-            <div class="answer-box">
-              <div class="answer-label">✅ 答案</div>
-              <div class="answer-content">Duanwu Festival, also known as the Dragon Boat Festival, is one of the most important traditional festivals in China. It falls on the fifth day of the fifth lunar month. On this day, people eat zongzi and hold dragon boat races. The festival is closely related to Qu Yuan, a great patriotic poet. Qu Yuan sacrificed for his country, which showed us the spirit of patriotism. As a teenager, I believe it is our duty and responsibility to strive for our motherland.</div>
-            </div>
-            <div class="explanation-box">
-              <div class="explanation-label">📖 解析</div>
-              <div class="explanation-content">题材：材料作文 | 时态：一般现在时为主 | 结构：节日介绍→习俗→精神内涵 | 高分句型：定语从句(which showed us...)、宾语从句(I believe...)</div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-
-      <div class="type-group" data-type="summary">
-        <div class="type-label">📊 本期说明</div>
-        <div class="questions-grid">
-          <div class="question-card active" data-type="summary" data-year="all">
-            <div class="card-header">
-              <span class="q-number">📌</span>
-              <span class="q-text"><strong>第1期：4类题型16题 · 2022-2024年扬州中考真题</strong></span>
-            </div>
-            <div class="card-meta">
-              <span class="meta-tag">编辑报告</span>
-              <span class="meta-tag type-tag">第1期</span>
-              <span class="meta-tag source">来源：扬州中考真题解析版</span>
-            </div>
-            <div class="answer-section">
-              <div class="answer-box">
-                <div class="answer-label">✅ 本期成果</div>
-                <div class="answer-content">✅ 单项选择5题 · 词汇运用5题 · 句子翻译5题 · 书面表达1题<br>✅ 每题含正确答案 + 详细中文解析<br>📂 题库储备：扬州2008-2024共17年中考真题已就绪</div>
-              </div>
-            </div>
-          </div>
+          <div class="question-card" data-type="书面表达" data-year="2024"><div class="card-header"><span class="q-number">Q1</span><span class="q-text">B.写作（计20分）<br>端午节是我国的传统节日。请写一篇英语短文介绍端午节：1. 时间和传统习俗；2. 屈原的爱国故事；3. 赛龙舟团队精神的现实意义。</span></div><div class="card-meta"><span class="meta-tag">2024年</span><span class="meta-tag type-tag">书面表达</span><span class="meta-tag source">来源：2024年扬州中考真题</span></div><div class="expand-hint">💡 点击查看答案与解析</div><div class="answer-section"><div class="answer-box"><div class="answer-label">✅ 参考范文</div><div class="answer-content">Duanwu Festival, also known as the Dragon Boat Festival, is one of the most important traditional festivals in China. It falls on the fifth day of the fifth lunar month every year. On this day, people usually eat zongzi and hold dragon boat races. Zongzi is a kind of sticky rice dumpling wrapped in bamboo leaves. Dragon boat racing is not only an exciting sport but also a symbol of teamwork. The festival is closely related to Qu Yuan, a great patriotic poet in ancient China. Qu Yuan sacrificed for his country, which showed us the spirit of patriotism. As a teenager, I believe it is our duty and responsibility to strive for the prosperity and strength of our motherland.</div></div><div class="explanation-box"><div class="explanation-label">📖 解析</div><div class="explanation-content">题材：材料作文 | 时态：一般现在时为主 | 结构：节日介绍→习俗→精神内涵<br>亮点词汇：traditional festival, is closely related to, strive for<br>高分句型：定语从句(which showed us...)、宾语从句(I believe it is...)</div></div></div></div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- WEEKLY_CONTENT_END -->
-
+<!-- WEEKLY_CONTENT_END -->
 </main>
-
-<!-- ===== FOOTER ===== -->
 <footer>
-  <p>🚀 Powered by Hermes Agent · 数据来源：近三年扬州中考真题及教育类权威网站 · 每周一自动更新</p>
+  <p>🚀 Powered by Hermes Agent · 数据来源：2022-2024年扬州中考真题 · 每周一自动更新</p>
   <p>题目来源标注于每题下方，仅供学习参考 · <a href="https://github.com/Wallbreaker3906/yangzhou-english-weekly" target="_blank">GitHub</a></p>
 </footer>
-
 <script>
-(function() {
-  const searchInput = document.getElementById('search-input');
-  const searchClear = document.getElementById('search-clear');
-  const searchCount = document.getElementById('search-count');
-  const filterBar = document.getElementById('filter-bar');
-  const activeFiltersCount = document.getElementById('active-filters-count');
-  const mainEl = document.querySelector('main');
-
-  // State
-  let activeYears = new Set(['2024', '2023', '2022']);
-  let activeType = 'all';
-  let activeWeek = 'all';
-
-  // Filter Chips
-  filterBar.addEventListener('click', function(e) {
-    const chip = e.target.closest('.filter-chip');
-    if (!chip) return;
-    const filter = chip.dataset.filter;
-    const value = chip.dataset.value;
-
-    if (filter === 'year') {
-      if (activeYears.has(value)) {
-        if (activeYears.size > 1) {
-          activeYears.delete(value);
-          chip.classList.remove('active');
-        }
-      } else {
-        activeYears.add(value);
-        chip.classList.add('active');
-      }
-    } else if (filter === 'type') {
-      filterBar.querySelectorAll('[data-filter="type"]').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      activeType = value;
-    } else if (filter === 'week') {
-      filterBar.querySelectorAll('[data-filter="week"]').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      activeWeek = value;
-    }
-
-    applyFilters();
-    updateActiveFilterCount();
-  });
-
-  // Search
-  searchInput.addEventListener('input', function() {
-    var query = this.value.trim().toLowerCase();
-    if (query) {
-      searchClear.classList.add('visible');
-    } else {
-      searchClear.classList.remove('visible');
-    }
-    applyFilters();
-  });
-
-  searchClear.addEventListener('click', function() {
-    searchInput.value = '';
-    searchClear.classList.remove('visible');
-    searchCount.textContent = '';
-    applyFilters();
-  });
-
-  // Card Click (expand)
-  mainEl.addEventListener('click', function(e) {
-    var card = e.target.closest('.question-card');
-    if (!card) return;
-    card.classList.toggle('active');
-  });
-
-  // Apply Filters
-  function applyFilters() {
-    var query = searchInput.value.trim().toLowerCase();
-    var totalVisible = 0;
-    var totalCards = 0;
-
-    var cards = mainEl.querySelectorAll('.question-card');
-    totalCards = cards.length;
-
-    cards.forEach(function(card) {
-      
-      var weekEl = card.closest('.week-section');
-      var year = card.dataset.year || '';
-      var week = weekEl ? weekEl.dataset.week : '';
-      var type = card.dataset.type || '';
-      var visible = true;
-
-      if (grade && !activeYears.has(grade)) visible = false;
-      if (activeType !== 'all' && type !== activeType) visible = false;
-      if (activeWeek !== 'all' && week !== activeWeek) visible = false;
-
-      if (query) {
-        var cardText = card.textContent.toLowerCase();
-        if (cardText.indexOf(query) === -1) visible = false;
-      }
-
-      if (visible) { card.classList.remove('filtered-out'); totalVisible++; }
-      else { card.classList.add('filtered-out'); }
-    });
-
-    // Hide empty groups
-    mainEl.querySelectorAll('.type-group').forEach(function(group) {
-      var vc = group.querySelectorAll('.question-card:not(.filtered-out)');
-      if (vc.length === 0) group.classList.add('filtered-empty');
-      else group.classList.remove('filtered-empty');
-    });
-
-    mainEl.querySelectorAll('.grade-section').forEach(function(section) {
-      var vg = section.querySelectorAll('.type-group:not(.filtered-empty)');
-      if (vg.length === 0) section.classList.add('filtered-empty');
-      else section.classList.remove('filtered-empty');
-    });
-
-    mainEl.querySelectorAll('.week-section').forEach(function(section) {
-      var vw = section.querySelectorAll('.grade-section:not(.filtered-empty)');
-      if (vw.length === 0) section.classList.add('filtered-empty');
-      else section.classList.remove('filtered-empty');
-    });
-
-    if (query) searchCount.textContent = totalVisible + '/' + totalCards;
-    else searchCount.textContent = '';
-
-    var placeholder = document.getElementById('placeholder');
-    if (placeholder && totalCards > 0 && totalVisible === 0) {
-      placeholder.style.display = 'block';
-      placeholder.querySelector('.emoji').textContent = '🔍';
-      placeholder.querySelector('p').textContent = '没有找到匹配的题目，试试其他筛选条件吧～';
-    } else if (placeholder && totalCards > 0) {
-      placeholder.style.display = 'none';
-    }
-  }
-
-  function updateActiveFilterCount() {
-    var gradeCount = activeYears.size;
-    if (yearCount < 3 || activeType !== 'all' || activeWeek !== 'all') {
-      activeFiltersCount.classList.add('visible');
-      var parts = [];
-      if (yearCount < 3) parts.push(yearCount + '/3个年份');
-      if (activeType !== 'all') parts.push('题型: ' + activeType);
-      if (activeWeek !== 'all') parts.push('周次: ' + activeWeek);
-      activeFiltersCount.textContent = '（已筛选: ' + parts.join(' | ') + '）';
-    } else {
-      activeFiltersCount.classList.remove('visible');
-    }
-  }
-
-  // Populate Week Chips
-  function updateWeekChips() {
-    var weekChips = filterBar.querySelectorAll('[data-filter="week"]:not([data-value="all"])');
-    var weekSections = mainEl.querySelectorAll('.week-section');
-    var existingWeeks = new Set();
-    weekSections.forEach(function(s) { if (s.dataset.week) existingWeeks.add(s.dataset.week); });
-
-    weekChips.forEach(function(chip) {
-      if (!existingWeeks.has(chip.dataset.value)) chip.remove();
-    });
-
-    existingWeeks.forEach(function(weekValue) {
-      if (!filterBar.querySelector('[data-filter="week"][data-value="' + weekValue + '"]')) {
-        var allChip = filterBar.querySelector('[data-filter="week"][data-value="all"]');
-        var newChip = document.createElement('span');
-        newChip.className = 'filter-chip';
-        newChip.dataset.filter = 'week';
-        newChip.dataset.value = weekValue;
-        newChip.textContent = weekValue.replace('week-', '第') + '周';
-        allChip.after(newChip);
-      }
-    });
-  }
-
-  // Update Stats
-  function updateStats() {
-    document.getElementById('total-questions').textContent = mainEl.querySelectorAll('.question-card').length;
-    document.getElementById('total-weeks').textContent = mainEl.querySelectorAll('.week-section').length;
-  }
-
-  // Init
-  updateWeekChips();
-  updateStats();
-  applyFilters();
-
-  // Expose for content injection
-  window.englishWeekly = {
-    refresh: function() {
-      updateWeekChips();
-      updateStats();
-      applyFilters();
-    }
-  };
-
+(function(){
+var si=document.getElementById('search-input'),sc=document.getElementById('search-clear'),sco=document.getElementById('search-count');
+var fb=document.getElementById('filter-bar'),afc=document.getElementById('active-filters-count'),m=document.querySelector('main');
+var activeYears=new Set(['2024','2023','2022']),activeType='all',activeWeek='all';
+fb.addEventListener('click',function(e){
+var c=e.target.closest('.filter-chip');if(!c)return;
+var f=c.dataset.filter,v=c.dataset.value;
+if(f==='year'){if(activeYears.has(v)){if(activeYears.size>1){activeYears.delete(v);c.classList.remove('active')}}else{activeYears.add(v);c.classList.add('active')}}
+else if(f==='type'){fb.querySelectorAll('[data-filter="type"]').forEach(function(x){x.classList.remove('active')});c.classList.add('active');activeType=v}
+else if(f==='week'){fb.querySelectorAll('[data-filter="week"]').forEach(function(x){x.classList.remove('active')});c.classList.add('active');activeWeek=v}
+apply();updateCount();
+});
+si.addEventListener('input',function(){var q=this.value.trim().toLowerCase();if(q)sc.classList.add('visible');else sc.classList.remove('visible');apply()});
+sc.addEventListener('click',function(){si.value='';sc.classList.remove('visible');sco.textContent='';apply()});
+m.addEventListener('click',function(e){var c=e.target.closest('.question-card');if(c)c.classList.toggle('active')});
+function apply(){
+var q=si.value.trim().toLowerCase(),tv=0,tc=0;
+m.querySelectorAll('.question-card').forEach(function(c){
+var y=c.dataset.year||'',w=(c.closest('.week-section')||{}).dataset?c.closest('.week-section').dataset.week:'',t=c.dataset.type||'',vi=true;
+if(y&&!activeYears.has(y))vi=false;if(activeType!=='all'&&t!==activeType)vi=false;if(activeWeek!=='all'&&w!==activeWeek)vi=false;
+if(q&&c.textContent.toLowerCase().indexOf(q)===-1)vi=false;
+if(vi){c.classList.remove('filtered-out');tv++}else{c.classList.add('filtered-out')}tc++;
+});
+m.querySelectorAll('.type-group').forEach(function(g){if(g.querySelectorAll('.question-card:not(.filtered-out)').length===0)g.classList.add('filtered-empty');else g.classList.remove('filtered-empty')});
+m.querySelectorAll('.grade-section').forEach(function(s){if(s.querySelectorAll('.type-group:not(.filtered-empty)').length===0)s.classList.add('filtered-empty');else s.classList.remove('filtered-empty')});
+m.querySelectorAll('.week-section').forEach(function(s){if(s.querySelectorAll('.grade-section:not(.filtered-empty)').length===0)s.classList.add('filtered-empty');else s.classList.remove('filtered-empty')});
+if(q)sco.textContent=tv+'/'+tc;else sco.textContent='';
+}
+function updateCount(){var yc=activeYears.size;if(yc<3||activeType!=='all'||activeWeek!=='all'){afc.classList.add('visible');var p=[];if(yc<3)p.push(yc+'/3个年份');if(activeType!=='all')p.push(activeType);if(activeWeek!=='all')p.push(activeWeek);afc.textContent='（已筛选: '+p.join(' | ')+'）'}else afc.classList.remove('visible')}
+function updateWeeks(){var cs=fb.querySelectorAll('[data-filter="week"]:not([data-value="all"])'),ws=m.querySelectorAll('.week-section'),ew=new Set();ws.forEach(function(s){if(s.dataset.week)ew.add(s.dataset.week)});cs.forEach(function(c){if(!ew.has(c.dataset.value))c.remove()});ew.forEach(function(w){if(!fb.querySelector('[data-filter="week"][data-value="'+w+'"]')){var ac=fb.querySelector('[data-filter="week"][data-value="all"]'),nc=document.createElement('span');nc.className='filter-chip';nc.dataset.filter='week';nc.dataset.value=w;nc.textContent=w.replace('week-','第')+'周';ac.after(nc)}})}
+function updateStats(){document.getElementById('total-questions').textContent=m.querySelectorAll('.question-card').length;document.getElementById('total-weeks').textContent=m.querySelectorAll('.week-section').length}
+updateWeeks();updateStats();apply();
+window.englishWeekly={refresh:function(){updateWeeks();updateStats();apply()}};
 })();
 </script>
-
 </body>
 </html>
