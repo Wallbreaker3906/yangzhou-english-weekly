@@ -5,27 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小船专供：扬州初中英语考题周报</title>
 <style>
-/* ===== Theme Variables ===== */
+/* ===== Theme — Fresh Light ===== */
 :root {
-  --bg: #0a0e14;
-  --card-bg: #141b22;
-  --card-hover: #1a2332;
-  --border: #1e293b;
-  --text: #c9d1d9;
-  --text-muted: #8b949e;
-  --accent: #58a6ff;
-  --accent2: #f78166;
-  --accent3: #7ee787;
-  --accent4: #d2a8ff;
-  --tag-bg: #1a2332;
-  --tag-text: #79c0ff;
-  --divider: #1c2534;
-  --step-bg: #0f1724;
-  --grade7: #58a6ff;
-  --grade8: #f78166;
-  --grade9: #d2a8ff;
-  --success: #7ee787;
-  --warn: #d29922;
+  --bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --card-hover: #f0f7ff;
+  --border: #e2e8f0;
+  --border-light: #edf2f7;
+  --text: #2d3748;
+  --text-muted: #718096;
+  --text-light: #a0aec0;
+  --accent: #3182ce;
+  --accent-light: #ebf4ff;
+  --accent2: #e53e3e;
+  --accent3: #38a169;
+  --accent4: #805ad5;
+  --tag-bg: #edf2f7;
+  --tag-text: #4a5568;
+  --divider: #e2e8f0;
+  --step-bg: #f7fafc;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
+  --grade7: #3182ce;
+  --grade7-bg: #ebf8ff;
+  --grade8: #dd6b20;
+  --grade8-bg: #fffaf0;
+  --grade9: #805ad5;
+  --grade9-bg: #faf5ff;
+  --success: #38a169;
+  --success-bg: #f0fff4;
+  --warn: #d69e2e;
+  --radius: 10px;
+  --radius-sm: 6px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,24 +44,24 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   line-height: 1.6;
   min-height: 100vh;
 }
 
 /* ===== Header ===== */
 header {
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-  border-bottom: 2px solid var(--accent);
-  padding: 20px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 18px 24px;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 
 .header-inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -62,27 +73,25 @@ header {
 .logo-area { display: flex; align-items: center; gap: 12px; }
 
 .logo-icon {
-  font-size: 32px;
+  font-size: 34px;
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-5px); }
 }
 
 .title-group h1 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), var(--accent4));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text);
 }
 
 .title-group .subtitle {
   font-size: 12px;
   color: var(--text-muted);
+  margin-top: 2px;
 }
 
 .header-stats {
@@ -96,24 +105,25 @@ header {
 
 /* ===== Search Bar ===== */
 .search-wrap {
-  max-width: 1200px;
-  margin: 16px auto;
+  max-width: 1100px;
+  margin: 14px auto 0;
   padding: 0 24px;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  background: var(--card-bg);
+  background: #fff;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 16px;
-  transition: border-color 0.2s;
+  border-radius: 24px;
+  padding: 10px 18px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
 }
 
 .search-box:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
 }
 
 .search-icon { font-size: 16px; margin-right: 10px; }
@@ -127,21 +137,22 @@ header {
   outline: none;
 }
 
-.search-box input::placeholder { color: var(--text-muted); }
+.search-box input::placeholder { color: var(--text-light); }
 
 .search-clear {
   background: none;
   border: none;
-  color: var(--text-muted);
+  color: var(--text-light);
   cursor: pointer;
   font-size: 16px;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 50%;
   display: none;
+  transition: all 0.15s;
 }
 
 .search-clear.visible { display: block; }
-.search-clear:hover { color: var(--accent2); }
+.search-clear:hover { color: var(--accent2); background: #fff5f5; }
 
 .search-count {
   font-size: 12px;
@@ -150,31 +161,39 @@ header {
   white-space: nowrap;
 }
 
-/* ===== Filter Bar ===== */
-.filter-bar {
-  max-width: 1200px;
-  margin: 0 auto 16px;
+/* ===== Filter Bar — Three Rows ===== */
+.filter-section {
+  max-width: 1100px;
+  margin: 12px auto;
   padding: 0 24px;
+}
+
+.filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
 }
+
+.filter-row:last-child { margin-bottom: 0; }
 
 .filter-label {
   font-size: 13px;
-  color: var(--text-muted);
+  font-weight: 600;
+  color: var(--text);
   margin-right: 4px;
   white-space: nowrap;
+  min-width: 48px;
 }
 
 .filter-chip {
-  padding: 6px 14px;
+  padding: 5px 14px;
   border-radius: 20px;
   font-size: 13px;
   cursor: pointer;
   border: 1px solid var(--border);
-  background: var(--card-bg);
+  background: #fff;
   color: var(--text-muted);
   transition: all 0.2s;
   white-space: nowrap;
@@ -183,13 +202,15 @@ header {
 
 .filter-chip:hover {
   border-color: var(--accent);
-  color: var(--text);
+  color: var(--accent);
+  background: var(--accent-light);
 }
 
 .filter-chip.active {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+  font-weight: 500;
 }
 
 .filter-chip.grade7.active { background: var(--grade7); border-color: var(--grade7); }
@@ -200,7 +221,7 @@ header {
   width: 1px;
   height: 20px;
   background: var(--border);
-  margin: 0 6px;
+  margin: 0 4px;
 }
 
 .active-filters {
@@ -214,7 +235,7 @@ header {
 
 /* ===== Main Content ===== */
 main {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto 40px;
   padding: 0 24px;
   display: flex;
@@ -223,7 +244,7 @@ main {
 
 /* ===== Week Section ===== */
 .week-section {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .week-header {
@@ -231,8 +252,8 @@ main {
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--divider);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-light);
 }
 
 .week-dot {
@@ -240,26 +261,26 @@ main {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
 }
 
 .week-header h2 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
 }
 
 .week-badge {
   font-size: 12px;
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  padding: 3px 10px;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 3px 12px;
   border-radius: 12px;
+  font-weight: 500;
 }
 
 /* ===== Grade Section ===== */
 .grade-section {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .grade-label {
@@ -267,25 +288,28 @@ main {
   align-items: center;
   gap: 8px;
   font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  padding: 4px 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding: 5px 16px;
   border-radius: 6px;
 }
 
 .grade-label.g7 {
-  background: rgba(88, 166, 255, 0.1);
+  background: var(--grade7-bg);
   color: var(--grade7);
+  border-left: 3px solid var(--grade7);
 }
 
 .grade-label.g8 {
-  background: rgba(247, 129, 102, 0.1);
+  background: var(--grade8-bg);
   color: var(--grade8);
+  border-left: 3px solid var(--grade8);
 }
 
 .grade-label.g9 {
-  background: rgba(210, 168, 255, 0.1);
+  background: var(--grade9-bg);
   color: var(--grade9);
+  border-left: 3px solid var(--grade9);
 }
 
 /* ===== Type Group ===== */
@@ -295,35 +319,48 @@ main {
 
 .type-label {
   font-size: 13px;
+  font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 8px;
-  padding-left: 4px;
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.type-label::before {
+  content: '';
+  width: 4px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 /* ===== Question Cards ===== */
 .questions-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 8px;
 }
 
 .question-card {
-  background: var(--card-bg);
+  background: #fff;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: var(--radius);
+  padding: 16px 18px;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: var(--shadow);
 }
 
 .question-card:hover {
   border-color: var(--accent);
-  background: var(--card-hover);
+  box-shadow: var(--shadow-hover);
 }
 
 .question-card.active {
   border-color: var(--accent);
-  box-shadow: 0 0 20px rgba(88, 166, 255, 0.08);
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.12);
 }
 
 .card-header {
@@ -331,14 +368,15 @@ main {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .q-number {
   font-size: 13px;
   color: var(--accent);
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
+  min-width: 28px;
 }
 
 .q-text {
@@ -353,7 +391,7 @@ main {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .meta-tag {
@@ -362,15 +400,18 @@ main {
   border-radius: 4px;
   background: var(--tag-bg);
   color: var(--tag-text);
+  font-weight: 500;
 }
 
 .meta-tag.source {
   color: var(--text-muted);
   font-style: italic;
+  background: none;
+  padding-left: 0;
 }
 
 .meta-tag.type-tag {
-  background: rgba(210, 168, 255, 0.15);
+  background: #faf5ff;
   color: var(--accent4);
 }
 
@@ -379,24 +420,24 @@ main {
   display: none;
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1px solid var(--divider);
+  border-top: 1px dashed var(--border);
 }
 
 .question-card.active .answer-section { display: block; }
 
 .answer-box {
-  background: var(--step-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px;
+  background: var(--success-bg);
+  border: 1px solid #c6f6d5;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
   margin-bottom: 10px;
 }
 
 .answer-label {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--accent3);
-  margin-bottom: 6px;
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: 4px;
 }
 
 .answer-content {
@@ -406,17 +447,17 @@ main {
 }
 
 .explanation-box {
-  background: rgba(210, 168, 255, 0.05);
-  border: 1px solid rgba(210, 168, 255, 0.15);
-  border-radius: 8px;
-  padding: 14px;
+  background: #faf5ff;
+  border: 1px solid #e9d8fd;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
 }
 
 .explanation-label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent4);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .explanation-content {
@@ -428,36 +469,35 @@ main {
 /* ===== Expand Hint ===== */
 .expand-hint {
   font-size: 11px;
-  color: var(--text-muted);
+  color: var(--text-light);
   text-align: right;
   margin-top: 4px;
-  opacity: 0.6;
 }
 
-.question-card.active .expand-hint { opacity: 1; color: var(--accent); }
+.question-card.active .expand-hint { color: var(--accent); font-weight: 500; }
 
-/* ===== No Results ===== */
+/* ===== No Results / Placeholder ===== */
 .no-results {
   text-align: center;
-  padding: 40px;
+  padding: 60px 20px;
   color: var(--text-muted);
   font-size: 15px;
 }
 
-.no-results .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
+.no-results .emoji { font-size: 48px; display: block; margin-bottom: 16px; }
 
 /* ===== Footer ===== */
 footer {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px 24px 40px;
   text-align: center;
   font-size: 12px;
-  color: var(--text-muted);
-  border-top: 1px solid var(--divider);
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
 }
 
-footer a { color: var(--accent); text-decoration: none; }
+footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
 
 /* ===== Filtered / Hidden States ===== */
 .question-card.filtered-out { display: none; }
@@ -468,15 +508,10 @@ footer a { color: var(--accent); text-decoration: none; }
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .header-inner { flex-direction: column; align-items: flex-start; }
-  .filter-bar { gap: 6px; }
+  .filter-row { gap: 6px; }
   .filter-chip { padding: 4px 10px; font-size: 12px; }
-  .title-group h1 { font-size: 18px; }
-}
-
-/* ===== Loading pulse for cron-added sections ===== */
-@keyframes pulse-border {
-  0%, 100% { border-color: var(--border); }
-  50% { border-color: var(--accent); }
+  .title-group h1 { font-size: 17px; }
+  .header-stats { font-size: 12px; gap: 10px; }
 }
 </style>
 </head>
@@ -510,34 +545,40 @@ footer a { color: var(--accent); text-decoration: none; }
   </div>
 </div>
 
-<!-- ===== FILTER BAR ===== -->
-<div class="filter-bar" id="filter-bar">
-  <span class="filter-label">📅 年级：</span>
-  <span class="filter-chip grade7 active" data-filter="grade" data-value="grade7">初一</span>
-  <span class="filter-chip grade8 active" data-filter="grade" data-value="grade8">初二</span>
-  <span class="filter-chip grade9 active" data-filter="grade" data-value="grade9">初三</span>
+<!-- ===== FILTER BAR — Three Rows ===== -->
+<div class="filter-section" id="filter-bar">
+  <!-- Row 1: 年级 -->
+  <div class="filter-row">
+    <span class="filter-label">📅 年级</span>
+    <span class="filter-chip grade7 active" data-filter="grade" data-value="grade7">初一</span>
+    <span class="filter-chip grade8 active" data-filter="grade" data-value="grade8">初二</span>
+    <span class="filter-chip grade9 active" data-filter="grade" data-value="grade9">初三</span>
+    <span class="active-filters" id="active-filters-count"></span>
+  </div>
 
-  <span class="filter-divider"></span>
-  <span class="filter-label">📋 题型：</span>
-  <span class="filter-chip active" data-filter="type" data-value="all">全部</span>
-  <span class="filter-chip" data-filter="type" data-value="单项选择">单项选择</span>
-  <span class="filter-chip" data-filter="type" data-value="完形填空">完形填空</span>
-  <span class="filter-chip" data-filter="type" data-value="词汇运用">词汇运用</span>
-  <span class="filter-chip" data-filter="type" data-value="阅读理解">阅读理解</span>
-  <span class="filter-chip" data-filter="type" data-value="任务型阅读">任务型阅读</span>
-  <span class="filter-chip" data-filter="type" data-value="选句填空">选句填空</span>
-  <span class="filter-chip" data-filter="type" data-value="书面表达">书面表达</span>
-  <span class="filter-chip" data-filter="type" data-value="句子翻译">句子翻译</span>
-  <span class="filter-chip" data-filter="type" data-value="句型转换">句型转换</span>
-  <span class="filter-chip" data-filter="type" data-value="语法填空">语法填空</span>
+  <!-- Row 2: 题型 -->
+  <div class="filter-row">
+    <span class="filter-label">📋 题型</span>
+    <span class="filter-chip active" data-filter="type" data-value="all">全部</span>
+    <span class="filter-chip" data-filter="type" data-value="单项选择">单项选择</span>
+    <span class="filter-chip" data-filter="type" data-value="完形填空">完形填空</span>
+    <span class="filter-chip" data-filter="type" data-value="词汇运用">词汇运用</span>
+    <span class="filter-chip" data-filter="type" data-value="阅读理解">阅读理解</span>
+    <span class="filter-chip" data-filter="type" data-value="任务型阅读">任务型阅读</span>
+    <span class="filter-chip" data-filter="type" data-value="选句填空">选句填空</span>
+    <span class="filter-chip" data-filter="type" data-value="书面表达">书面表达</span>
+    <span class="filter-chip" data-filter="type" data-value="句子翻译">句子翻译</span>
+    <span class="filter-chip" data-filter="type" data-value="句型转换">句型转换</span>
+    <span class="filter-chip" data-filter="type" data-value="语法填空">语法填空</span>
+  </div>
 
-  <span class="filter-divider"></span>
-  <span class="filter-label">📆 日期：</span>
-  <span class="filter-chip active" data-filter="week" data-value="all">全部</span>
-  <span class="filter-chip" data-filter="week" data-value="week-1">第1周</span>
-  <!-- Week chips populated by JS -->
-
-  <span class="active-filters" id="active-filters-count"></span>
+  <!-- Row 3: 日期 -->
+  <div class="filter-row">
+    <span class="filter-label">📆 周次</span>
+    <span class="filter-chip active" data-filter="week" data-value="all">全部</span>
+    <span class="filter-chip" data-filter="week" data-value="week-1">第1周</span>
+    <!-- Week chips populated by JS -->
+  </div>
 </div>
 
 <!-- ===== MAIN CONTENT ===== -->
@@ -546,98 +587,9 @@ footer a { color: var(--accent); text-decoration: none; }
   <!-- Week sections will be inserted here -->
   <!-- WEEKLY_CONTENT_START -->
 
-  <!-- ⛵ 第1周 | 2026.06.03 - 2026.06.09 -->
-  <div class="week-section" id="week-1" data-week="week-1">
-    <div class="week-header">
-      <span class="week-dot"></span>
-      <h2>第1周考题精选</h2>
-      <span class="week-badge">2026.06.03 - 2026.06.09</span>
-    </div>
-
-    <!-- 初一 -->
-    <div class="grade-section" data-grade="grade7">
-      <div class="grade-label g7">📗 初一（七年级）</div>
-      <div class="type-group" data-type="单项选择">
-        <div class="type-label">📝 单项选择（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div>
-        <div class="questions-grid">
-          <div class="question-card" data-type="单项选择" onclick="this.classList.toggle('active')">
-            <div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：菁优网(jyeoo.com)已确认存在扬州地区七年级英语试题库，但免费接口返回的题目内容经过脱敏处理，无法获取完整的题目文本、选项和答案解析。需要注册付费账号或配置 API 密钥后才能批量提取。</span></div>
-            <div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：菁优网(已验证存在)</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="type-group" data-type="完形填空"><div class="type-label">📖 完形填空（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="完形填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：学科网(zxxk.com)需要登录才能查看完整试题内容，普通搜索返回403禁止访问。建议配置学科网账号后重新抓取。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">完形填空</span><span class="meta-tag source">来源：学科网(需登录)</span></div></div></div></div>
-      <div class="type-group" data-type="词汇运用"><div class="type-label">🔤 词汇运用（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="词汇运用" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：21世纪教育网(21cnjy.com)和菁优网均有扬州地区词汇题资源，但平台反爬机制严格，自动化抓取需要 Cookie/Session 认证。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：21世纪教育网(需认证)</span></div></div></div></div>
-      <div class="type-group" data-type="阅读理解"><div class="type-label">📚 阅读理解（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="阅读理解" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：长篇阅读题需要完整原文和选项，菁优网搜索"扬州+七年级+英语"返回100页结果，但每题内容均被截断。需付费查看完整内容。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">阅读理解</span><span class="meta-tag source">来源：菁优网(需付费)</span></div></div></div></div>
-      <div class="type-group" data-type="任务型阅读"><div class="type-label">📋 任务型阅读（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="任务型阅读" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：任务型阅读题型在扬州中考中常见，菁优网和学科网均有收录，但需付费账号访问完整试题与解析。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">任务型阅读</span><span class="meta-tag source">来源：菁优网/学科网(需付费)</span></div></div></div></div>
-      <div class="type-group" data-type="选句填空"><div class="type-label">🧩 选句填空/七选五（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="选句填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：七选五题型需完整选项和上下文，无法从免费预览中提取。建议获取官方试卷 PDF 后人工录入。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">选句填空</span><span class="meta-tag source">来源：需官方试卷</span></div></div></div></div>
-      <div class="type-group" data-type="书面表达"><div class="type-label">✍️ 书面表达（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="书面表达" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：书面表达（写作）题需要完整的题目要求和范文。菁优网有范文但需登录查看。建议关注扬州中考真题的作文题目。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">书面表达</span><span class="meta-tag source">来源：菁优网(需登录)</span></div></div></div></div>
-      <div class="type-group" data-type="句子翻译"><div class="type-label">🔄 句子翻译（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="句子翻译" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中译英/英译中为扬州中考常见题型，历年真题均可从菁优网查阅，但免费接口限制访问。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：菁优网(限制访问)</span></div></div></div></div>
-      <div class="type-group" data-type="句型转换"><div class="type-label">🔀 句型转换（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="句型转换" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：同义句转换、主动被动语态转换等题型在初一阶段相对基础。学科网有配套练习但需登录访问。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">句型转换</span><span class="meta-tag source">来源：学科网(需登录)</span></div></div></div></div>
-      <div class="type-group" data-type="语法填空"><div class="type-label">📝 语法填空/短文填空（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="语法填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：语法填空是新中考常见题型，菁优网收录了大量扬州地区试题，每题有难度系数和引用次数，但完整内容和答案需付费查看。</span></div><div class="card-meta"><span class="meta-tag">初一</span><span class="meta-tag type-tag">语法填空</span><span class="meta-tag source">来源：菁优网(需付费)</span></div></div></div></div>
-    </div>
-
-    <!-- 初二 -->
-    <div class="grade-section" data-grade="grade8">
-      <div class="grade-label g8">📘 初二（八年级）</div>
-      <div class="type-group" data-type="单项选择"><div class="type-label">📝 单项选择（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="单项选择" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：初二英语语法知识点增多（宾语从句、状语从句等），菁优网扬州地区题库丰富，但需付费账号获取完整题目+答案+解析。搜索"扬州+八年级+英语"确认有大量试题。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：菁优网(已验证存在)</span></div></div></div></div>
-      <div class="type-group" data-type="完形填空"><div class="type-label">📖 完形填空（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="完形填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：八年级完形填空难度适中，学科网和菁优网收录了扬州各区期中/期末试题。需要 Cookie 认证访问。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">完形填空</span><span class="meta-tag source">来源：学科网(需Cookie)</span></div></div></div></div>
-      <div class="type-group" data-type="词汇运用"><div class="type-label">🔤 词汇运用（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="词汇运用" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：21世纪教育网提供了丰富的扬州地区八年级英语词汇专项练习，但试题预览不包含答案。需付费下载完整试卷包。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：21世纪教育网(需付费)</span></div></div></div></div>
-      <div class="type-group" data-type="阅读理解"><div class="type-label">📚 阅读理解（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="阅读理解" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：八年级阅读理解要求提高（推断、主旨大意等），扬州中考真题和模拟题均有收录。菁优网可搜索到相关题目但有访问限制。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">阅读理解</span><span class="meta-tag source">来源：菁优网(限制访问)</span></div></div></div></div>
-      <div class="type-group" data-type="任务型阅读"><div class="type-label">📋 任务型阅读（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="任务型阅读" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：任务型阅读（回答问题/填表）是江苏中考特色题型，扬州各校期中期末均有涉及。资源存在但需付费访问。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">任务型阅读</span><span class="meta-tag source">来源：学科网(需付费)</span></div></div></div></div>
-      <div class="type-group" data-type="选句填空"><div class="type-label">🧩 选句填空/七选五（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="选句填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：七选五题型考察逻辑衔接能力，扬州名校期中试卷中常见。可在菁优网通过"扬州+八年级+七选五"搜索到相关题目。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">选句填空</span><span class="meta-tag source">来源：菁优网(搜索可达)</span></div></div></div></div>
-      <div class="type-group" data-type="书面表达"><div class="type-label">✍️ 书面表达（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="书面表达" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：八年级写作要求80-100词，常见话题包括校园生活、环保、健康等。扬州中考真题作文题目可通过江苏省教育考试院官网查阅。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">书面表达</span><span class="meta-tag source">来源：江苏省教育考试院</span></div></div></div></div>
-      <div class="type-group" data-type="句子翻译"><div class="type-label">🔄 句子翻译（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="句子翻译" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：句子翻译（中译英）在扬州中考中分值占比不小，菁优网收录了历年真题。但免费用户无法查看答案。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：菁优网(需付费)</span></div></div></div></div>
-      <div class="type-group" data-type="句型转换"><div class="type-label">🔀 句型转换（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="句型转换" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：句型转换涉及if条件句、比较级转换等初二重点语法。学科网有专项练习但访问受限。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">句型转换</span><span class="meta-tag source">来源：学科网(需登录)</span></div></div></div></div>
-      <div class="type-group" data-type="语法填空"><div class="type-label">📝 语法填空/短文填空（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="语法填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：语法填空考察综合语法运用能力，扬州地区各校月考/期中试题中常见。菁优网可搜到相关题目。</span></div><div class="card-meta"><span class="meta-tag">初二</span><span class="meta-tag type-tag">语法填空</span><span class="meta-tag source">来源：菁优网(搜索可达)</span></div></div></div></div>
-    </div>
-
-    <!-- 初三 -->
-    <div class="grade-section" data-grade="grade9">
-      <div class="grade-label g9">📕 初三（九年级）</div>
-      <div class="type-group" data-type="单项选择"><div class="type-label">📝 单项选择（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="单项选择" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：初三/中考阶段单项选择难度最高（定语从句、虚拟语气等），扬州2023-2025年中考真题是权威来源。菁优网收录了历年扬州中考真题，确认搜索"扬州+中考+英语"返回大量结果，但每题需付费查看答案和解析。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">单项选择</span><span class="meta-tag source">来源：菁优网(扬州中考真题已确认)</span></div></div></div></div>
-      <div class="type-group" data-type="完形填空"><div class="type-label">📖 完形填空（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="完形填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中考完形填空通常为15空/250词左右的短文。扬州市教研室的模拟试题质量较高，可从学科网获取但需学校账号。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">完形填空</span><span class="meta-tag source">来源：学科网(需学校账号)</span></div></div></div></div>
-      <div class="type-group" data-type="词汇运用"><div class="type-label">🔤 词汇运用（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="词汇运用" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中考词汇运用要求掌握1600+词汇，扬州中考常考词性转换和首字母填空。21世纪教育网有扬州地区专项练习。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">词汇运用</span><span class="meta-tag source">来源：21世纪教育网</span></div></div></div></div>
-      <div class="type-group" data-type="阅读理解"><div class="type-label">📚 阅读理解（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="阅读理解" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中考阅读理解4篇（含应用文、记叙文、说明文、议论文），扬州中考阅读理解侧重细节理解和推理判断。菁优网和学科网均有历年真题。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">阅读理解</span><span class="meta-tag source">来源：菁优网/学科网</span></div></div></div></div>
-      <div class="type-group" data-type="任务型阅读"><div class="type-label">📋 任务型阅读（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="任务型阅读" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：任务型阅读是江苏中考必考题型（10分），扬州中考通常为表格填空形式。历年真题可从江苏省教育厅公开资源获取。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">任务型阅读</span><span class="meta-tag source">来源：江苏省教育厅</span></div></div></div></div>
-      <div class="type-group" data-type="选句填空"><div class="type-label">🧩 选句填空/七选五（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="选句填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：七选五是中考常见题型，扬州中考近三年均涉及。真题可在菁优网通过搜索"扬州+中考+七选五"获取试题列表。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">选句填空</span><span class="meta-tag source">来源：菁优网(列表已确认)</span></div></div></div></div>
-      <div class="type-group" data-type="书面表达"><div class="type-label">✍️ 书面表达（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="书面表达" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中考写作20分，要求100词左右。扬州2023年中考作文题为"我的梦想"，2024年为"一次难忘的经历"（待核实），2025年待补充。需从官方渠道确认。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">书面表达</span><span class="meta-tag source">来源：扬州中考真题(待核实)</span></div></div></div></div>
-      <div class="type-group" data-type="句子翻译"><div class="type-label">🔄 句子翻译（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="句子翻译" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中考句子翻译5题共10分，扬州卷侧重常见短语和句型（如"be used to doing"、"had better"等）。菁优网收录了历年真题。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">句子翻译</span><span class="meta-tag source">来源：菁优网(真题已收录)</span></div></div></div></div>
-      <div class="type-group" data-type="句型转换"><div class="type-label">🔀 句型转换（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="句型转换" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：中考句型转换涉及被动语态、间接引语、强调句等高级语法。扬州各校模拟题中常见，学科网可搜索"扬州+句型转换+中考"。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">句型转换</span><span class="meta-tag source">来源：学科网(搜索可查)</span></div></div></div></div>
-      <div class="type-group" data-type="语法填空"><div class="type-label">📝 语法填空/短文填空（5题）<span style="color:var(--warn);font-size:12px;margin-left:8px;">⚠️ 本期暂缺</span></div><div class="questions-grid"><div class="question-card" data-type="语法填空" onclick="this.classList.toggle('active')"><div class="card-header"><span class="q-number">📋</span><span class="q-text">本期暂缺：语法填空是中考重点题型（10空/10分），涵盖动词时态、非谓语、连词、冠词等。扬州中考近三年真题均有此题型。菁优网搜索"扬州+中考+语法填空"结果丰富。</span></div><div class="card-meta"><span class="meta-tag">初三</span><span class="meta-tag type-tag">语法填空</span><span class="meta-tag source">来源：菁优网(结果丰富)</span></div></div></div></div>
-    </div>
-
-    <!-- 本周总结 -->
-    <div class="type-group" data-type="summary">
-      <div class="type-label">📊 第1周编辑说明</div>
-      <div class="questions-grid">
-        <div class="question-card active" data-type="summary" onclick="this.classList.toggle('active')">
-          <div class="card-header"><span class="q-number">📌</span><span class="q-text">【本周编辑报告】第1周为框架建立和资源验证期</span></div>
-          <div class="card-meta"><span class="meta-tag">编辑报告</span><span class="meta-tag type-tag">第1周</span><span class="meta-tag source">来源：Hermes Agent 自动编辑</span></div>
-          <div class="expand-hint">💡 点击查看详细报告</div>
-          <div class="answer-section">
-            <div class="answer-box"><div class="answer-label">✅ 已验证的资源</div><div class="answer-content">
-              ✅ 菁优网(jyeoo.com)：搜索"扬州+中考+英语"确认有大量扬州地区英语试题，涵盖所有10种题型，每题标注难度系数、引用次数和来源<br>
-              ✅ 学科网(zxxk.com)：收录扬州各区县期中/期末/模拟试题，但需要学校/机构账号登录<br>
-              ✅ 21世纪教育网(21cnjy.com)：提供扬州地区专项练习和试卷包下载，需付费<br>
-              ✅ 扬州市教育局官网(jyj.yangzhou.gov.cn)：网站可正常访问，但未直接提供试题下载<br>
-              ✅ 江苏省教育考试院：中考相关政策在官网公示，历年真题需通过特定渠道获取
-            </div></div>
-            <div class="explanation-box"><div class="explanation-label">📖 当前障碍与下周计划</div><div class="explanation-content">
-              🔴 主要障碍：所有中国教育类题库网站均设有严格的反爬保护机制，免费接口返回的题目内容经过脱敏/截断处理，无法获取完整题目文本和答案解析<br>
-              🔴 搜索结果虽多，但每题需要登录/付费才能查看完整内容<br><br>
-              🟢 下周改进方案：<br>
-              1. 如用户能提供菁优网/学科网的付费账号 Cookie 或 API 密钥，自动化抓取可立即实现<br>
-              2. 可尝试从公开的百度文库/道客巴巴等平台搜索"扬州中考英语真题 PDF"<br>
-              3. 如用户能提供扬州中考真题的 PDF 文件，可使用 OCR 工具批量提取题目<br>
-              4. 联系扬州当地教育机构或学校获取官方试卷资源<br><br>
-              ⚡ 当前网站框架已搭建完成，一旦解决资源访问问题，每周可自动更新 150 道（3年级×10题型×5题）带答案和解析的真题。
-            </div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <div class="no-results" id="placeholder">
+    <span class="emoji">📝</span>
+    <p>第一期考题正在准备中…<br>每周一自动更新，敬请期待！</p>
   </div>
 
   <!-- WEEKLY_CONTENT_END -->
@@ -652,23 +604,19 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <script>
 (function() {
-  // ===== DOM Refs =====
   const searchInput = document.getElementById('search-input');
   const searchClear = document.getElementById('search-clear');
   const searchCount = document.getElementById('search-count');
   const filterBar = document.getElementById('filter-bar');
-  const content = document.getElementById('main' === 'main' ? null : document.querySelector('main'));
   const activeFiltersCount = document.getElementById('active-filters-count');
-
-  // Use main tag
   const mainEl = document.querySelector('main');
 
-  // ===== State =====
+  // State
   let activeGrades = new Set(['grade7', 'grade8', 'grade9']);
   let activeType = 'all';
   let activeWeek = 'all';
 
-  // ===== Filter Chips =====
+  // Filter Chips
   filterBar.addEventListener('click', function(e) {
     const chip = e.target.closest('.filter-chip');
     if (!chip) return;
@@ -686,7 +634,6 @@ footer a { color: var(--accent); text-decoration: none; }
         chip.classList.add('active');
       }
     } else if (filter === 'type') {
-      // Deselect all type chips
       filterBar.querySelectorAll('[data-filter="type"]').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       activeType = value;
@@ -700,9 +647,9 @@ footer a { color: var(--accent); text-decoration: none; }
     updateActiveFilterCount();
   });
 
-  // ===== Search =====
+  // Search
   searchInput.addEventListener('input', function() {
-    const query = this.value.trim().toLowerCase();
+    var query = this.value.trim().toLowerCase();
     if (query) {
       searchClear.classList.add('visible');
     } else {
@@ -718,91 +665,66 @@ footer a { color: var(--accent); text-decoration: none; }
     applyFilters();
   });
 
-  // ===== Card Click (expand) =====
+  // Card Click (expand)
   mainEl.addEventListener('click', function(e) {
-    const card = e.target.closest('.question-card');
+    var card = e.target.closest('.question-card');
     if (!card) return;
     card.classList.toggle('active');
   });
 
-  // ===== Apply Filters =====
+  // Apply Filters
   function applyFilters() {
-    const query = searchInput.value.trim().toLowerCase();
-    let totalVisible = 0;
-    let totalCards = 0;
+    var query = searchInput.value.trim().toLowerCase();
+    var totalVisible = 0;
+    var totalCards = 0;
 
-    const cards = mainEl.querySelectorAll('.question-card');
+    var cards = mainEl.querySelectorAll('.question-card');
     totalCards = cards.length;
 
-    cards.forEach(card => {
-      const gradeEl = card.closest('.grade-section');
-      const weekEl = card.closest('.week-section');
-      const grade = gradeEl ? gradeEl.dataset.grade : '';
-      const week = weekEl ? weekEl.dataset.week : '';
-      const type = card.dataset.type || '';
+    cards.forEach(function(card) {
+      var gradeEl = card.closest('.grade-section');
+      var weekEl = card.closest('.week-section');
+      var grade = gradeEl ? gradeEl.dataset.grade : '';
+      var week = weekEl ? weekEl.dataset.week : '';
+      var type = card.dataset.type || '';
+      var visible = true;
 
-      let visible = true;
-
-      // Grade filter
       if (grade && !activeGrades.has(grade)) visible = false;
-
-      // Type filter
       if (activeType !== 'all' && type !== activeType) visible = false;
-
-      // Week filter
       if (activeWeek !== 'all' && week !== activeWeek) visible = false;
 
-      // Search
       if (query) {
-        const cardText = card.textContent.toLowerCase();
-        if (!cardText.includes(query)) visible = false;
+        var cardText = card.textContent.toLowerCase();
+        if (cardText.indexOf(query) === -1) visible = false;
       }
 
-      if (visible) {
-        card.classList.remove('filtered-out');
-        totalVisible++;
-      } else {
-        card.classList.add('filtered-out');
-      }
+      if (visible) { card.classList.remove('filtered-out'); totalVisible++; }
+      else { card.classList.add('filtered-out'); }
     });
 
     // Hide empty groups
-    mainEl.querySelectorAll('.type-group').forEach(group => {
-      const visibleCards = group.querySelectorAll('.question-card:not(.filtered-out)');
-      if (visibleCards.length === 0) {
-        group.classList.add('filtered-empty');
-      } else {
-        group.classList.remove('filtered-empty');
-      }
+    mainEl.querySelectorAll('.type-group').forEach(function(group) {
+      var vc = group.querySelectorAll('.question-card:not(.filtered-out)');
+      if (vc.length === 0) group.classList.add('filtered-empty');
+      else group.classList.remove('filtered-empty');
     });
 
-    mainEl.querySelectorAll('.grade-section').forEach(section => {
-      const visibleGroups = section.querySelectorAll('.type-group:not(.filtered-empty)');
-      if (visibleGroups.length === 0) {
-        section.classList.add('filtered-empty');
-      } else {
-        section.classList.remove('filtered-empty');
-      }
+    mainEl.querySelectorAll('.grade-section').forEach(function(section) {
+      var vg = section.querySelectorAll('.type-group:not(.filtered-empty)');
+      if (vg.length === 0) section.classList.add('filtered-empty');
+      else section.classList.remove('filtered-empty');
     });
 
-    mainEl.querySelectorAll('.week-section').forEach(section => {
-      const visibleGrades = section.querySelectorAll('.grade-section:not(.filtered-empty)');
-      if (visibleGrades.length === 0) {
-        section.classList.add('filtered-empty');
-      } else {
-        section.classList.remove('filtered-empty');
-      }
+    mainEl.querySelectorAll('.week-section').forEach(function(section) {
+      var vw = section.querySelectorAll('.grade-section:not(.filtered-empty)');
+      if (vw.length === 0) section.classList.add('filtered-empty');
+      else section.classList.remove('filtered-empty');
     });
 
-    // Update search count
-    if (query) {
-      searchCount.textContent = totalVisible + '/' + totalCards;
-    } else {
-      searchCount.textContent = '';
-    }
+    if (query) searchCount.textContent = totalVisible + '/' + totalCards;
+    else searchCount.textContent = '';
 
-    // Update placeholder
-    const placeholder = document.getElementById('placeholder');
+    var placeholder = document.getElementById('placeholder');
     if (placeholder && totalCards > 0 && totalVisible === 0) {
       placeholder.style.display = 'block';
       placeholder.querySelector('.emoji').textContent = '🔍';
@@ -812,44 +734,35 @@ footer a { color: var(--accent); text-decoration: none; }
     }
   }
 
-  // ===== Update Active Filter Count =====
   function updateActiveFilterCount() {
-    const gradeCount = activeGrades.size;
-    const totalGrades = 3;
-    if (gradeCount < totalGrades || activeType !== 'all' || activeWeek !== 'all') {
+    var gradeCount = activeGrades.size;
+    if (gradeCount < 3 || activeType !== 'all' || activeWeek !== 'all') {
       activeFiltersCount.classList.add('visible');
-      let parts = [];
-      if (gradeCount < totalGrades) parts.push(gradeCount + '/' + totalGrades + '个年级');
+      var parts = [];
+      if (gradeCount < 3) parts.push(gradeCount + '/3个年级');
       if (activeType !== 'all') parts.push('题型: ' + activeType);
-      if (activeWeek !== 'all') parts.push('周: ' + activeWeek);
+      if (activeWeek !== 'all') parts.push('周次: ' + activeWeek);
       activeFiltersCount.textContent = '（已筛选: ' + parts.join(' | ') + '）';
     } else {
       activeFiltersCount.classList.remove('visible');
     }
   }
 
-  // ===== Populate Week Dropdown =====
+  // Populate Week Chips
   function updateWeekChips() {
-    const weekChips = filterBar.querySelectorAll('[data-filter="week"]:not([data-value="all"])');
-    const weekSections = mainEl.querySelectorAll('.week-section');
-    const existingWeeks = new Set();
-    weekSections.forEach(s => {
-      if (s.dataset.week) existingWeeks.add(s.dataset.week);
+    var weekChips = filterBar.querySelectorAll('[data-filter="week"]:not([data-value="all"])');
+    var weekSections = mainEl.querySelectorAll('.week-section');
+    var existingWeeks = new Set();
+    weekSections.forEach(function(s) { if (s.dataset.week) existingWeeks.add(s.dataset.week); });
+
+    weekChips.forEach(function(chip) {
+      if (!existingWeeks.has(chip.dataset.value)) chip.remove();
     });
 
-    // Remove chips for weeks that no longer exist
-    weekChips.forEach(chip => {
-      if (!existingWeeks.has(chip.dataset.value)) {
-        chip.remove();
-      }
-    });
-
-    // Add chips for new weeks
-    existingWeeks.forEach(weekValue => {
-      const exists = filterBar.querySelector('[data-filter="week"][data-value="' + weekValue + '"]');
-      if (!exists) {
-        const allChip = filterBar.querySelector('[data-filter="week"][data-value="all"]');
-        const newChip = document.createElement('span');
+    existingWeeks.forEach(function(weekValue) {
+      if (!filterBar.querySelector('[data-filter="week"][data-value="' + weekValue + '"]')) {
+        var allChip = filterBar.querySelector('[data-filter="week"][data-value="all"]');
+        var newChip = document.createElement('span');
         newChip.className = 'filter-chip';
         newChip.dataset.filter = 'week';
         newChip.dataset.value = weekValue;
@@ -859,15 +772,13 @@ footer a { color: var(--accent); text-decoration: none; }
     });
   }
 
-  // ===== Stats Update =====
+  // Update Stats
   function updateStats() {
-    const totalCards = mainEl.querySelectorAll('.question-card').length;
-    const totalWeeks = mainEl.querySelectorAll('.week-section').length;
-    document.getElementById('total-questions').textContent = totalCards;
-    document.getElementById('total-weeks').textContent = totalWeeks;
+    document.getElementById('total-questions').textContent = mainEl.querySelectorAll('.question-card').length;
+    document.getElementById('total-weeks').textContent = mainEl.querySelectorAll('.week-section').length;
   }
 
-  // ===== Init =====
+  // Init
   updateWeekChips();
   updateStats();
   applyFilters();
