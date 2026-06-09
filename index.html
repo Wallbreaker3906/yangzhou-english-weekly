@@ -39,6 +39,7 @@ header { background:#fff; border-bottom:1px solid var(--border); padding:16px 16
 .filter-chip { padding:7px 15px; border-radius:20px; font-size:14px; cursor:pointer; border:1px solid var(--border); background:#fff; color:var(--text-muted); transition:all .2s; user-select:none; }
 .filter-chip:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-light); }
 .filter-chip.active { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+.filter-chip.y2025.active { background:#e8590c; border-color:#e8590c; }
 .filter-chip.y2024.active { background:#3182ce; border-color:#3182ce; }
 .filter-chip.y2023.active { background:#805ad5; border-color:#805ad5; }
 .filter-chip.y2022.active { background:#dd6b20; border-color:#dd6b20; }
@@ -128,6 +129,7 @@ footer a { color:var(--accent); text-decoration:none; font-weight:500; }
 <div class="filter-section" id="filter-bar">
   <div class="filter-row">
     <span class="filter-label">📅 年份</span>
+    <span class="filter-chip y2025 active" data-filter="year" data-value="2025">2025年</span>
     <span class="filter-chip y2024 active" data-filter="year" data-value="2024">2024年</span>
     <span class="filter-chip y2023 active" data-filter="year" data-value="2023">2023年</span>
     <span class="filter-chip y2022 active" data-filter="year" data-value="2022">2022年</span>
