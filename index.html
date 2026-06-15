@@ -301,7 +301,7 @@ footer a { color:var(--accent); text-decoration:none; font-weight:500; }
 (function(){
 var si=document.getElementById('search-input'),sc=document.getElementById('search-clear'),sco=document.getElementById('search-count');
 var fb=document.getElementById('filter-bar'),afc=document.getElementById('active-filters-count'),m=document.querySelector('main');
-var activeYears=new Set(['2024','2023','2022']),activeType='all',activeWeek='all';
+var activeYears=new Set(['2025','2024','2023','2022']),activeType='all',activeWeek='all';
 fb.addEventListener('click',function(e){
 var c=e.target.closest('.filter-chip');if(!c)return;
 var f=c.dataset.filter,v=c.dataset.value;
