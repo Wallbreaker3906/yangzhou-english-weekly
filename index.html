@@ -130,6 +130,7 @@ footer a { color:var(--accent); text-decoration:none; font-weight:500; }
 <div class="filter-section" id="filter-bar">
   <div class="filter-row">
     <span class="filter-label">📅 年份</span>
+    <span class="filter-chip y2026 active" data-filter="year" data-value="2026" style="background:#3182ce;border-color:#3182ce;color:#fff">2026年</span>
     <span class="filter-chip y2025 active" data-filter="year" data-value="2025">2025年</span>
     <span class="filter-chip y2024 active" data-filter="year" data-value="2024">2024年</span>
     <span class="filter-chip y2023 active" data-filter="year" data-value="2023">2023年</span>
@@ -492,7 +493,7 @@ footer a { color:var(--accent); text-decoration:none; font-weight:500; }
 (function(){
 var si=document.getElementById('search-input'),sc=document.getElementById('search-clear'),sco=document.getElementById('search-count');
 var fb=document.getElementById('filter-bar'),afc=document.getElementById('active-filters-count'),m=document.querySelector('main');
-var activeYears=new Set(['2025','2024','2023','2022']),activeType='all',activeWeek='all';
+var activeYears=new Set(['2026','2025','2024','2023','2022']),activeType='all',activeWeek='all';
 fb.addEventListener('click',function(e){
 var c=e.target.closest('.filter-chip');if(!c)return;
 var f=c.dataset.filter,v=c.dataset.value;
