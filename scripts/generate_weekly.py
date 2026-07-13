@@ -24,30 +24,45 @@ def save_used(ids):
         json.dump(ids, f, ensure_ascii=False)
 
 def pick_questions(bank, used_ids):
-    """随机选题，避免重复"""
-    by_type_year = {}
-    for i, q in enumerate(bank):
-        key = (q["type"], q["year"])
-        if key not in by_type_year:
-            by_type_year[key] = []
-        by_type_year[key].append((i, q))
-    
-    selected_indices = []
+    """按题型选，每题尽量分布在不同年份"""
     used_set = set(used_ids)
     available = [i for i in range(len(bank)) if i not in used_set]
     
     # 按题型选
     picks = {"单项选择": 5, "词汇运用": 5, "句子翻译": 5, "书面表达": 1}
+    selected_indices = []
     
     for qtype, count in picks.items():
-        # 从该类型可用题目中选
-        type_available = [i for i in available if bank[i]["type"] == qtype]
-        if len(type_available) < count:
-            # 不够就全部用上（包括已用过的）
-            all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype]
-            chosen = random.sample(all_type, min(count, len(all_type)))
-        else:
-            chosen = random.sample(type_available, count)
+        # 收集该题型各年份的可用题目
+        by_year = {}
+        years = ["2022","2023","2024","2025","2026"]
+        for i in available:
+            q = bank[i]
+            if q["type"] == qtype and q["year"] in years:
+                by_year.setdefault(q["year"], []).append(i)
+        
+        # 尽量每年选至少一题，不够的从随机年份补
+        chosen = []
+        for yr in years:
+            if yr in by_year and by_year[yr]:
+                idx = random.choice(by_year[yr])
+                chosen.append(idx)
+                by_year[yr].remove(idx)
+                if len(chosen) >= count:
+                    break
+        
+        # 不够就从剩余里随机补
+        if len(chosen) < count:
+            remaining = []
+            for yr in years:
+                remaining.extend(by_year.get(yr, []))
+            if remaining:
+                if len(remaining) < count - len(chosen):
+                    # 全部用上还不够，从未用过的选题
+                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype]
+                    remaining = [i for i in all_type if i not in chosen]
+                chosen.extend(random.sample(remaining, min(count - len(chosen), len(remaining))))
+        
         selected_indices.extend(chosen)
     
     return [bank[i] for i in selected_indices], selected_indices
