@@ -51,17 +51,24 @@ def pick_questions(bank, used_ids):
                 if len(chosen) >= count:
                     break
         
-        # 不够就从剩余里随机补
+        # 不够就从剩余里随机补（包括重用已选题）
         if len(chosen) < count:
+            # 先尝试未用过的
             remaining = []
             for yr in years:
                 remaining.extend(by_year.get(yr, []))
-            if remaining:
-                if len(remaining) < count - len(chosen):
-                    # 全部用上还不够，从未用过的选题
-                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype]
-                    remaining = [i for i in all_type if i not in chosen]
-                chosen.extend(random.sample(remaining, min(count - len(chosen), len(remaining))))
+            if len(remaining) >= count - len(chosen):
+                chosen.extend(random.sample(remaining, count - len(chosen)))
+            else:
+                # 不够 —— 从全部题目中补（包括已用的）
+                chosen_from_remaining = len(remaining)
+                if remaining:
+                    chosen.extend(remaining)
+                still_need = count - len(chosen)
+                if still_need > 0:
+                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen]
+                    if all_type:
+                        chosen.extend(random.sample(all_type, min(still_need, len(all_type))))
         
         selected_indices.extend(chosen)
     
