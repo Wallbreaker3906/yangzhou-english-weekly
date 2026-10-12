@@ -23,6 +23,13 @@ def save_used(ids):
     with open(USED_FILE, "w", encoding="utf-8") as f:
         json.dump(ids, f, ensure_ascii=False)
 
+def has_complete_options(q):
+    """单项选择的选项是否四项齐全；选项被截断且无法从解析还原的题目不选入周报"""
+    if q.get("type") != "单项选择":
+        return True
+    opts = parse_options(render_options(q))
+    return len(opts) == 4 and all(len(t) >= 2 for _, t in opts)
+
 def pick_questions(bank, used_ids):
     """按题型选，每题尽量分布在不同年份"""
     used_set = set(used_ids)
@@ -40,6 +47,13 @@ def pick_questions(bank, used_ids):
             q = bank[i]
             if q["type"] == qtype and q["year"] in years:
                 by_year.setdefault(q["year"], []).append(i)
+        
+        # 优先选选项齐全的题目（题库里选项被截断又无法还原的不进周报）
+        if qtype == "单项选择":
+            for yr in list(by_year):
+                good = [i for i in by_year[yr] if has_complete_options(bank[i])]
+                if good:
+                    by_year[yr] = good
         
         # 尽量每年选至少一题，不够的从随机年份补
         chosen = []
@@ -66,7 +80,7 @@ def pick_questions(bank, used_ids):
                     chosen.extend(remaining)
                 still_need = count - len(chosen)
                 if still_need > 0:
-                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen]
+                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen and has_complete_options(bank[i])]
                     if all_type:
                         chosen.extend(random.sample(all_type, min(still_need, len(all_type))))
         
@@ -80,6 +94,48 @@ def clean_text(s):
     s = re.sub(r'\s{2,}', ' ', s)
     return s.strip()
 
+def parse_options(o):
+    """把 'A. xx  B. yy  C. zz  D. ww' 拆成 [('A','xx'),('B','yy'),...]"""
+    return [(l, t.strip()) for l, t in re.findall(r'([A-D])\.\s*(.*?)(?=\s*[A-D]\.|$)', o)]
+
+LATIN_RUN = r"([A-Za-z][A-Za-z\-\'\u2019,;\./]*(?:\s+[A-Za-z][A-Za-z\-\'\u2019,;\./]*)*)"
+
+def recover_last_option(q, opts):
+    """题库 options 里 D 项被截断成单个字母时，用解析中按序出现的四个选项英文原词还原。
+    只有结构上可确证才返回，否则返回 None —— 绝不猜测。"""
+    last_t = opts[-1][1]
+    exp = re.sub(r'\s+', ' ', q.get("explanation", ""))
+    abc = [t for _, t in opts[:3]]
+    if any((not t) or re.search(r'[\u4e00-\u9fff]', t) for t in abc):
+        return None
+    cur = 0
+    for t in abc:
+        p = exp.find(t, cur)
+        if p < 0:
+            return None
+        cur = p + len(t)
+    m = re.search(LATIN_RUN + r"\s*(?=[\u4e00-\u9fff。，；：“”（）()])", exp[cur:cur + 100])
+    if not m:
+        return None
+    cand = m.group(1).strip()
+    if not (2 <= len(cand) <= 30) or cand[0].lower() != last_t.lower():
+        return None
+    return cand
+
+def render_options(q):
+    """统一选项分隔空格；D 项被截断且能从解析确证时补全。解析不动题库文件。"""
+    o = q.get("options", "")
+    opts = parse_options(o)
+    lossless = (len(opts) == 4 and
+                re.sub(r'\s', '', o) == re.sub(r'\s', '', "".join(l + "." + t for l, t in opts)))
+    if not lossless:
+        return o
+    if len(opts[-1][1]) <= 1:
+        fixed = recover_last_option(q, opts)
+        if fixed:
+            opts[-1] = (opts[-1][0], fixed)
+    return "  ".join(f"{l}. {t}" for l, t in opts)
+
 def generate_card(q, idx):
     """生成题目卡片 HTML"""
     qtype = q["type"]
@@ -90,7 +146,7 @@ def generate_card(q, idx):
     explanation = clean_text(q.get("explanation", ""))
     
     if qtype == "单项选择":
-        options = q.get("options", "")
+        options = render_options(q)
         q_body = f'<div class="card-header"><span class="q-number">Q{idx}</span><span class="q-text">{question}</span></div>'
         q_body += f'<div style="font-size:15px;color:var(--text-muted);margin:8px 0 0 36px;line-height:2.2;">{options}</div>'
     else:
