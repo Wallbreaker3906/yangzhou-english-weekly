@@ -30,10 +30,14 @@ def has_complete_options(q):
     opts = parse_options(render_options(q))
     return len(opts) == 4 and all(len(t) >= 2 for _, t in opts)
 
+def has_answer(q):
+    """题库中有少量题缺答案，渲染出来是空白答案卡，不选入周报"""
+    return bool(str(q.get("answer", "")).strip()) or bool(str(q.get("explanation", "")).strip())
+
 def pick_questions(bank, used_ids):
     """按题型选，每题尽量分布在不同年份"""
     used_set = set(used_ids)
-    available = [i for i in range(len(bank)) if i not in used_set]
+    available = [i for i in range(len(bank)) if i not in used_set and has_answer(bank[i])]
     
     # 按题型选
     picks = {"单项选择": 5, "词汇运用": 5, "句子翻译": 5, "书面表达": 1}
@@ -80,7 +84,7 @@ def pick_questions(bank, used_ids):
                     chosen.extend(remaining)
                 still_need = count - len(chosen)
                 if still_need > 0:
-                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen and has_complete_options(bank[i])]
+                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen and has_complete_options(bank[i]) and has_answer(bank[i])]
                     if all_type:
                         chosen.extend(random.sample(all_type, min(still_need, len(all_type))))
         
