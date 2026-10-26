@@ -23,6 +23,20 @@ def save_used(ids):
     with open(USED_FILE, "w", encoding="utf-8") as f:
         json.dump(ids, f, ensure_ascii=False)
 
+# 题库里「答案与解析互相矛盾」的题：不改 questions_bank.json，只在选题目时跳过。
+# 例：题干 "They use ________ to take photos" 应填宾格 them(B)，题库标 C their，
+#     解析却写「修饰名词 smart phones 需用形容词性物主代词」——与题干不符。
+EXCLUDED = {
+    ("2026", "— Why do people take so many smart phones when travelling?"),
+}
+
+def is_excluded(q):
+    for year, head in EXCLUDED:
+        if str(q.get("year")) == year and str(q.get("question", "")).strip().startswith(head):
+            return True
+    return False
+
+
 def has_complete_options(q):
     """单项选择的选项是否四项齐全；选项被截断且无法从解析还原的题目不选入周报"""
     if q.get("type") != "单项选择":
@@ -37,7 +51,7 @@ def has_answer(q):
 def pick_questions(bank, used_ids):
     """按题型选，每题尽量分布在不同年份"""
     used_set = set(used_ids)
-    available = [i for i in range(len(bank)) if i not in used_set and has_answer(bank[i])]
+    available = [i for i in range(len(bank)) if i not in used_set and has_answer(bank[i]) and not is_excluded(bank[i])]
     
     # 按题型选
     picks = {"单项选择": 5, "词汇运用": 5, "句子翻译": 5, "书面表达": 1}
@@ -84,7 +98,7 @@ def pick_questions(bank, used_ids):
                     chosen.extend(remaining)
                 still_need = count - len(chosen)
                 if still_need > 0:
-                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen and has_complete_options(bank[i]) and has_answer(bank[i])]
+                    all_type = [i for i in range(len(bank)) if bank[i]["type"] == qtype and i not in chosen and has_complete_options(bank[i]) and has_answer(bank[i]) and not is_excluded(bank[i])]
                     if all_type:
                         chosen.extend(random.sample(all_type, min(still_need, len(all_type))))
         
@@ -96,6 +110,16 @@ def clean_text(s):
     """清理文本中的多余空白和换行"""
     s = re.sub(r'\n+', ' ', s)
     s = re.sub(r'\s{2,}', ' ', s)
+    return s.strip()
+
+LEAK_MARKER = re.compile(r'[一二三四五六七八九十]+、\s*(?:阅读表达|阅读短文|阅读理解|完形填空|词汇运用|句子翻译|单项选择|书面表达)')
+
+def sanitize_explanation(s):
+    """题库有 3 道词汇运用题的解析尾部粘进了下个大题的阅读短文（最长 2000 字），
+    渲染时从下个「五、阅读表达」这类大题标题处截断。只改渲染层，不动题库。"""
+    m = LEAK_MARKER.search(s)
+    if m:
+        s = s[:m.start()]
     return s.strip()
 
 def parse_options(o):
@@ -147,7 +171,7 @@ def generate_card(q, idx):
     source = q.get("source", f"{year}年扬州中考真题")
     question = clean_text(q["question"])
     answer = clean_text(q.get("answer", ""))
-    explanation = clean_text(q.get("explanation", ""))
+    explanation = sanitize_explanation(clean_text(q.get("explanation", "")))
     
     if qtype == "单项选择":
         options = render_options(q)
