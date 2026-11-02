@@ -108,6 +108,9 @@ def pick_questions(bank, used_ids):
 
 def clean_text(s):
     """清理文本中的多余空白和换行"""
+    # 题库里 2024 单选第 75 题题干被拆成「—T\n\nhey have…」，空白行把一个单词切成两半。
+    # 仅修复「边界 + 单个大写字母 + 空行 + 小写词」这种确证的断裂，正常段落分隔不受影响。
+    s = re.sub(r"(^|[\s—–\-'\"(])[ \t]*([A-Z])[ \t]*\n[ \t]*\n[ \t]*([a-z]{2,})", r"\1\2\3", s)
     s = re.sub(r'\n+', ' ', s)
     s = re.sub(r'\s{2,}', ' ', s)
     return s.strip()
